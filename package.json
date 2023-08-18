@@ -1,0 +1,57 @@
+{
+  "name": "@lincy/base-config",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.4.0",
+  "description": "Opinionated collection of common JavaScript / TypeScript utils by LCY",
+  "author": "lincenying <lincenying@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/lincenying/base-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lincenying/base-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lincenying/base-config/issues"
+  },
+  "keywords": [
+    "config"
+  ],
+  "sideEffects": false,
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "release": "bumpp --commit --push --tag && npm publish --access public",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "unocss": "^0.55.1",
+    "unocss-applet": "^0.5.3"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^0.21.5",
+    "@lincy/eslint-config": "^2.1.0",
+    "@types/node": "^20.5.0",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.47.0",
+    "esno": "^0.17.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "rollup",
+        "postcss",
+        "esbuild",
+        "terser",
+        "prettier"
+      ]
+    }
+  }
+}
