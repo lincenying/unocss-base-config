@@ -22,6 +22,7 @@
     "src"
   ],
   "scripts": {
+    "postpublish": "open https://npmmirror.com/package/@lincy/base-config",
     "lint": "eslint . --ext .ts",
     "release": "bumpp --commit --push --tag && npm publish --access public",
     "typecheck": "tsc --noEmit"
