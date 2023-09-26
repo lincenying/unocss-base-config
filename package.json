@@ -18,11 +18,16 @@
     "config"
   ],
   "sideEffects": false,
+  "exports": {
+    "./*": {
+      "require": "./src/*.ts"
+    }
+  },
   "files": [
     "src"
   ],
   "scripts": {
-    "postpublish": "open https://npmmirror.com/package/@lincy/base-config",
+    "postpublish": "simple-open-url https://npmmirror.com/package/@lincy/base-config",
     "lint": "eslint . --ext .ts",
     "release": "bumpp --commit --push --tag && npm publish --access public",
     "typecheck": "tsc --noEmit"
@@ -38,6 +43,7 @@
     "bumpp": "^9.1.1",
     "eslint": "^8.47.0",
     "esno": "^0.17.0",
+    "simple-open-url": "^3.0.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.9"
   },
