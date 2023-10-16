@@ -18,11 +18,6 @@
     "config"
   ],
   "sideEffects": false,
-  "exports": {
-    "./*": {
-      "require": "./src/*.ts"
-    }
-  },
   "files": [
     "src"
   ],
