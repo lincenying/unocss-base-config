@@ -3,6 +3,7 @@ import type { Preset, SourceCodeTransformer } from 'unocss'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerApplet, transformerAttributify } from 'unocss-applet'
 import shortcuts from './shortcuts'
+import type { OpType } from './units'
 import { pxToRemPreset } from './units'
 
 const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
@@ -34,9 +35,7 @@ else {
     presets.push(presetAttributify())
 }
 
-presets.push(pxToRemPreset({ baseFontSize: 1, unti: 'rpx' }))
-
-export default () => defineConfig({
+export default (config: OpType = {}) => defineConfig({
     presets: [
         // 由 Iconify 提供支持的纯 CSS 图标解决方案
         presetIcons({
@@ -44,6 +43,7 @@ export default () => defineConfig({
             warn: true,
         }),
         ...presets,
+        ...[pxToRemPreset(config)],
     ],
     /**
      * 自定义快捷语句

@@ -1,8 +1,9 @@
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
 import shortcuts from './shortcuts'
+import type { OpType } from './units'
 import { pxToRemPreset } from './units'
 
-export default (fontSize: number) => defineConfig({
+export default (config: OpType = {}) => defineConfig({
     shortcuts,
     presets: [
         /**
@@ -24,7 +25,7 @@ export default (fontSize: number) => defineConfig({
         presetIcons({
             prefix: 'i-',
         }),
-        pxToRemPreset({ baseFontSize: fontSize }),
+        pxToRemPreset(config),
     ],
     transformers: [
         /**
