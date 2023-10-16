@@ -35,34 +35,36 @@ else {
     presets.push(presetAttributify())
 }
 
-export default (config: OpType = {}) => defineConfig({
-    presets: [
+export function uniappConfig(config: OpType = {}) {
+    return defineConfig({
+        presets: [
         // 由 Iconify 提供支持的纯 CSS 图标解决方案
-        presetIcons({
-            scale: 1.0,
-            warn: true,
-        }),
-        ...presets,
-        ...[pxToRemPreset(config)],
-    ],
-    /**
-     * 自定义快捷语句
-     * @see https://github.com/unocss/unocss#shortcuts
-     */
-    shortcuts,
-    transformers: [
+            presetIcons({
+                scale: 1.0,
+                warn: true,
+            }),
+            ...presets,
+            ...[pxToRemPreset(config)],
+        ],
+        /**
+         * 自定义快捷语句
+         * @see https://github.com/unocss/unocss#shortcuts
+         */
+        shortcuts,
+        transformers: [
         /**
          * 启用 --uno: 功能
          * @see https://unocss.dev/transformers/directives
          * @example .custom-div { --uno: text-center my-0 font-medium; }
          */
-        transformerDirectives(),
-        /**
-         * 启用 () 分组功能
-         * @see https://unocss.dev/transformers/variant-group
-         * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
-         */
-        transformerVariantGroup(),
-        ...transformers,
-    ],
-})
+            transformerDirectives(),
+            /**
+             * 启用 () 分组功能
+             * @see https://unocss.dev/transformers/variant-group
+             * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
+             */
+            transformerVariantGroup(),
+            ...transformers,
+        ],
+    })
+}

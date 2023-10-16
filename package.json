@@ -18,14 +18,27 @@
     "config"
   ],
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
     "postpublish": "simple-open-url https://npmmirror.com/package/@lincy/base-config",
+    "build": "tsup src/index.ts --format esm,cjs --shims --clean --dts",
+    "stub": "tsup src/index.ts --format esm",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "bumpp --commit --push --tag && npm publish --access public",
+    "prepublishOnly": "nr build",
+    "release": "bumpp && npm publish -r --access public",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -40,6 +53,7 @@
     "eslint": "^8.51.0",
     "esno": "^0.17.0",
     "simple-open-url": "^3.0.1",
+    "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.11"
   },
