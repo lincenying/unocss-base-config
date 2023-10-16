@@ -3,32 +3,7 @@ import type { Preset, SourceCodeTransformer } from 'unocss'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerApplet, transformerAttributify } from 'unocss-applet'
 import shortcuts from './shortcuts'
-
-const pxRE = /(-?[\.\d]+)px/g
-// const rpxRE = /(-?[\.\d]+)rpx/g
-
-interface opType {
-    baseFontSize?: number
-}
-
-function pxToRpxPreset(options: opType = {}): Preset {
-    const { baseFontSize = 100 } = options
-
-    return {
-        name: 'unocss-preset-px-to-rpx',
-        postprocess: (util) => {
-            util.entries.forEach((i) => {
-                const value = i[1]
-                // 将px单位转成rpx单位
-                if (value && typeof value === 'string' && pxRE.test(value))
-                    i[1] = value.replace(pxRE, (_, p1) => `${p1 / baseFontSize}rpx`)
-                // 将无单位生生的rpx单位还原成自己需要的rpx单位
-                // if (value && typeof value === 'string' && rpxRE.test(value))
-                //     i[1] = value.replace(rpxRE, (_, p1) => `${(p1 * 4) / baseFontSize}rpx`)
-            })
-        },
-    }
-}
+import { pxToRemPreset } from './units'
 
 const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
 
@@ -59,7 +34,7 @@ else {
     presets.push(presetAttributify())
 }
 
-presets.push(pxToRpxPreset({ baseFontSize: 1 }))
+presets.push(pxToRemPreset({ baseFontSize: 1, unti: 'rpx' }))
 
 export default () => defineConfig({
     presets: [
