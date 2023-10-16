@@ -53,7 +53,8 @@ export default (fontSize: number) => defineConfig({
         pxToRemPreset({ baseFontSize: fontSize }),
     ],
     transformers: [
-        /** 开启jsx文件的属性模式
+        /**
+         * 开启jsx文件的属性模式
          * @see https://unocss.dev/transformers/attributify-jsx
          */
         transformerAttributifyJsx(),

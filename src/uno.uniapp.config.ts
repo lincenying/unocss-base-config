@@ -1,3 +1,4 @@
+import process from 'node:process'
 import type { Preset, SourceCodeTransformer } from 'unocss'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerApplet, transformerAttributify } from 'unocss-applet'
@@ -36,9 +37,9 @@ const transformers: SourceCodeTransformer[] = []
 
 if (isApplet) {
     /**
-   * UnoCSS Applet
-   * @see https://github.com/unocss-applet/unocss-applet
-   */
+     * UnoCSS Applet
+     * @see https://github.com/unocss-applet/unocss-applet
+     */
     presets.push(presetApplet())
     // presets.push(presetRemRpx()) // 如果需要使用 rem 转 rpx 单位，需要启用此插件
     transformers.push(transformerAttributify())
