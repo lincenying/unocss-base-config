@@ -52,11 +52,11 @@ export function uniappConfig(config: OpType = {}) {
          */
         shortcuts,
         transformers: [
-        /**
-         * 启用 --uno: 功能
-         * @see https://unocss.dev/transformers/directives
-         * @example .custom-div { --uno: text-center my-0 font-medium; }
-         */
+            /**
+             * 启用 --uno: 功能
+             * @see https://unocss.dev/transformers/directives
+             * @example .custom-div { --uno: text-center my-0 font-medium; }
+             */
             transformerDirectives(),
             /**
              * 启用 () 分组功能

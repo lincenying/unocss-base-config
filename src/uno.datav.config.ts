@@ -8,10 +8,10 @@ export function datavConfig(config: OpType = {}) {
     return defineConfig({
         shortcuts,
         presets: [
-        /**
-         * 默认预设
-         * @see https://unocss.dev/presets/uno
-         */
+            /**
+             * 默认预设
+             * @see https://unocss.dev/presets/uno
+             */
             presetUno(),
             /**
              * 开启属性模式
