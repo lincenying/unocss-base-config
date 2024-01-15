@@ -1,5 +1,5 @@
 // src/uno.admin.config.ts
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from "unocss";
+import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
 
 // src/shortcuts.ts
 var shortcuts = [
@@ -55,7 +55,13 @@ function adminConfig() {
        * @see https://unocss.dev/transformers/variant-group
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
-      transformerVariantGroup()
+      transformerVariantGroup(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      transformerCompileClass()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
@@ -63,7 +69,7 @@ function adminConfig() {
 }
 
 // src/uno.datav.config.ts
-import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetUno as presetUno2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
+import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetUno as presetUno2, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
 
 // src/units.ts
 var pxRE = /(-?[\.\d]+)px/g;
@@ -124,7 +130,13 @@ function datavConfig(config = {}) {
        * @see https://unocss.dev/transformers/variant-group
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
-      transformerVariantGroup2()
+      transformerVariantGroup2(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      transformerCompileClass2()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
@@ -132,7 +144,7 @@ function datavConfig(config = {}) {
 }
 
 // src/uno.h5.config.ts
-import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetUno as presetUno3, transformerAttributifyJsx, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
+import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetUno as presetUno3, transformerAttributifyJsx, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
 function h5Config(config = {}) {
   return defineConfig3({
     shortcuts: shortcuts_default,
@@ -175,7 +187,13 @@ function h5Config(config = {}) {
        * @see https://unocss.dev/transformers/variant-group
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
-      transformerVariantGroup3()
+      transformerVariantGroup3(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      transformerCompileClass3()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
@@ -184,7 +202,7 @@ function h5Config(config = {}) {
 
 // src/uno.uniapp.config.ts
 import process from "process";
-import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetUno as presetUno4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
+import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetUno as presetUno4, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
 import { presetApplet, transformerApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
@@ -226,6 +244,12 @@ function uniappConfig(config = {}) {
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
       transformerVariantGroup4(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      transformerCompileClass4(),
       ...transformers
     ]
   });

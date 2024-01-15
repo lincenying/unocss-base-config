@@ -1,6 +1,6 @@
 import process from 'node:process'
 import type { Preset, SourceCodeTransformer } from 'unocss'
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerApplet, transformerAttributify } from 'unocss-applet'
 import shortcuts from './shortcuts'
 import type { OpType } from './units'
@@ -38,7 +38,7 @@ else {
 export function uniappConfig(config: OpType = {}) {
     return defineConfig({
         presets: [
-        // 由 Iconify 提供支持的纯 CSS 图标解决方案
+            // 由 Iconify 提供支持的纯 CSS 图标解决方案
             presetIcons({
                 scale: 1.0,
                 warn: true,
@@ -64,6 +64,13 @@ export function uniappConfig(config: OpType = {}) {
              * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
              */
             transformerVariantGroup(),
+            /**
+             * 将一组classes编译为一个class
+             * @see https://unocss.dev/transformers/compile-class
+             * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+             */
+            transformerCompileClass(),
+
             ...transformers,
         ],
     })

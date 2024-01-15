@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 import shortcuts from './shortcuts'
 import type { OpType } from './units'
@@ -30,11 +30,11 @@ export function datavConfig(config: OpType = {}) {
             pxToRemPreset(config),
         ],
         transformers: [
-        /**
-         * 启用 --uno: 功能
-         * @see https://unocss.dev/transformers/directives
-         * @example .custom-div { --uno: text-center my-0 font-medium; }
-         */
+            /**
+             * 启用 --uno: 功能
+             * @see https://unocss.dev/transformers/directives
+             * @example .custom-div { --uno: text-center my-0 font-medium; }
+             */
             transformerDirectives(),
             /**
              * 启用 () 分组功能
@@ -42,6 +42,12 @@ export function datavConfig(config: OpType = {}) {
              * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
              */
             transformerVariantGroup(),
+            /**
+             * 将一组classes编译为一个class
+             * @see https://unocss.dev/transformers/compile-class
+             * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+             */
+            transformerCompileClass(),
         ],
         safelist: 'svg-text1 svg-text2'.split(' '),
         rules: [],

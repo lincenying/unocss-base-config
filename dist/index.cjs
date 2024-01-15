@@ -94,7 +94,13 @@ function adminConfig() {
        * @see https://unocss.dev/transformers/variant-group
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
-      (0, import_unocss.transformerVariantGroup)()
+      (0, import_unocss.transformerVariantGroup)(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      (0, import_unocss.transformerCompileClass)()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
@@ -163,7 +169,13 @@ function datavConfig(config = {}) {
        * @see https://unocss.dev/transformers/variant-group
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
-      (0, import_unocss2.transformerVariantGroup)()
+      (0, import_unocss2.transformerVariantGroup)(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      (0, import_unocss2.transformerCompileClass)()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
@@ -214,7 +226,13 @@ function h5Config(config = {}) {
        * @see https://unocss.dev/transformers/variant-group
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
-      (0, import_unocss3.transformerVariantGroup)()
+      (0, import_unocss3.transformerVariantGroup)(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      (0, import_unocss3.transformerCompileClass)()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
@@ -265,6 +283,12 @@ function uniappConfig(config = {}) {
        * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
        */
       (0, import_unocss4.transformerVariantGroup)(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      (0, import_unocss4.transformerCompileClass)(),
       ...transformers
     ]
   });

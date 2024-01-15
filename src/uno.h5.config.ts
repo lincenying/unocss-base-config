@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import shortcuts from './shortcuts'
 import type { OpType } from './units'
 import { pxToRemPreset } from './units'
@@ -29,10 +29,10 @@ export function h5Config(config: OpType = {}) {
             pxToRemPreset(config),
         ],
         transformers: [
-        /**
-         * 开启jsx文件的属性模式
-         * @see https://unocss.dev/transformers/attributify-jsx
-         */
+            /**
+             * 开启jsx文件的属性模式
+             * @see https://unocss.dev/transformers/attributify-jsx
+             */
             transformerAttributifyJsx(),
             /**
              * 启用 --uno: 功能
@@ -46,6 +46,12 @@ export function h5Config(config: OpType = {}) {
              * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
              */
             transformerVariantGroup(),
+            /**
+             * 将一组classes编译为一个class
+             * @see https://unocss.dev/transformers/compile-class
+             * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+             */
+            transformerCompileClass(),
         ],
         safelist: 'svg-text1 svg-text2'.split(' '),
         rules: [],
