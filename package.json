@@ -42,19 +42,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "unocss": "^0.58.4",
+    "unocss": "^0.58.7",
     "unocss-applet": "^0.7.8"
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.12",
-    "@lincy/eslint-config": "^4.2.5",
-    "@types/node": "^20.11.16",
-    "bumpp": "^9.3.0",
-    "eslint": "^8.56.0",
-    "esno": "^4.0.0",
+    "@lincy/eslint-config": "^4.2.6",
+    "@types/node": "^20.11.30",
+    "bumpp": "^9.4.0",
+    "eslint": "^8.57.0",
+    "esno": "^4.7.0",
     "simple-open-url": "^3.0.1",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
