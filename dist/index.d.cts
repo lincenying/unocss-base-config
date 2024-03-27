@@ -1,6 +1,7 @@
-import * as _unocss_core from '@unocss/core';
+import * as unocss from 'unocss';
 
-declare function adminConfig(): _unocss_core.UserConfig<object>;
+declare function webConfig(): unocss.UserConfig<object>;
+declare const adminConfig: typeof webConfig;
 
 interface OpType {
     baseFontSize?: number;
@@ -8,10 +9,11 @@ interface OpType {
     unti?: 'rem' | 'rpx';
 }
 
-declare function datavConfig(config?: OpType): _unocss_core.UserConfig<object>;
+declare function webRemConfig(config?: OpType): unocss.UserConfig<object>;
+declare const datavConfig: typeof webRemConfig;
 
-declare function h5Config(config?: OpType): _unocss_core.UserConfig<object>;
+declare function h5Config(config?: OpType): unocss.UserConfig<object>;
 
-declare function uniappConfig(config?: OpType): _unocss_core.UserConfig<object>;
+declare function uniappConfig(config?: OpType): unocss.UserConfig<object>;
 
-export { adminConfig, datavConfig, h5Config, uniappConfig };
+export { adminConfig, datavConfig, h5Config, uniappConfig, webConfig, webRemConfig };

@@ -33,11 +33,13 @@ __export(src_exports, {
   adminConfig: () => adminConfig,
   datavConfig: () => datavConfig,
   h5Config: () => h5Config,
-  uniappConfig: () => uniappConfig
+  uniappConfig: () => uniappConfig,
+  webConfig: () => webConfig,
+  webRemConfig: () => webRemConfig
 });
 module.exports = __toCommonJS(src_exports);
 
-// src/uno.admin.config.ts
+// src/uno.web.config.ts
 var import_unocss = require("unocss");
 
 // src/shortcuts.ts
@@ -60,8 +62,8 @@ var shortcuts = [
 ];
 var shortcuts_default = shortcuts;
 
-// src/uno.admin.config.ts
-function adminConfig() {
+// src/uno.web.config.ts
+function webConfig() {
   return (0, import_unocss.defineConfig)({
     shortcuts: shortcuts_default,
     presets: [
@@ -103,14 +105,25 @@ function adminConfig() {
        * @see https://unocss.dev/transformers/compile-class
        * @example <div class=":uno: text-sm font-bold hover:text-red"/>
        */
-      (0, import_unocss.transformerCompileClass)()
+      (0, import_unocss.transformerCompileClass)(),
+      /**
+       * 开启jsx文件的属性模式
+       * @see https://unocss.dev/transformers/attributify-jsx
+       * @example ```
+       * export function Component() {
+       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
+       * }
+       * ```
+       */
+      (0, import_unocss.transformerAttributifyJsx)()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
   });
 }
+var adminConfig = webConfig;
 
-// src/uno.datav.config.ts
+// src/uno.web.rem.config.ts
 var import_unocss2 = require("unocss");
 
 // src/units.ts
@@ -134,8 +147,8 @@ function pxToRemPreset(options = {}) {
   };
 }
 
-// src/uno.datav.config.ts
-function datavConfig(config = {}) {
+// src/uno.web.rem.config.ts
+function webRemConfig(config = {}) {
   return (0, import_unocss2.defineConfig)({
     shortcuts: shortcuts_default,
     presets: [
@@ -178,12 +191,23 @@ function datavConfig(config = {}) {
        * @see https://unocss.dev/transformers/compile-class
        * @example <div class=":uno: text-sm font-bold hover:text-red"/>
        */
-      (0, import_unocss2.transformerCompileClass)()
+      (0, import_unocss2.transformerCompileClass)(),
+      /**
+       * 开启jsx文件的属性模式
+       * @see https://unocss.dev/transformers/attributify-jsx
+       * @example ```
+       * export function Component() {
+       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
+       * }
+       * ```
+       */
+      (0, import_unocss2.transformerAttributifyJsx)()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
   });
 }
+var datavConfig = webRemConfig;
 
 // src/uno.h5.config.ts
 var import_unocss3 = require("unocss");
@@ -301,5 +325,7 @@ function uniappConfig(config = {}) {
   adminConfig,
   datavConfig,
   h5Config,
-  uniappConfig
+  uniappConfig,
+  webConfig,
+  webRemConfig
 });

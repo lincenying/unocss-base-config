@@ -1,5 +1,5 @@
-// src/uno.admin.config.ts
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
+// src/uno.web.config.ts
+import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
 
 // src/shortcuts.ts
 var shortcuts = [
@@ -21,8 +21,8 @@ var shortcuts = [
 ];
 var shortcuts_default = shortcuts;
 
-// src/uno.admin.config.ts
-function adminConfig() {
+// src/uno.web.config.ts
+function webConfig() {
   return defineConfig({
     shortcuts: shortcuts_default,
     presets: [
@@ -64,15 +64,26 @@ function adminConfig() {
        * @see https://unocss.dev/transformers/compile-class
        * @example <div class=":uno: text-sm font-bold hover:text-red"/>
        */
-      transformerCompileClass()
+      transformerCompileClass(),
+      /**
+       * 开启jsx文件的属性模式
+       * @see https://unocss.dev/transformers/attributify-jsx
+       * @example ```
+       * export function Component() {
+       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
+       * }
+       * ```
+       */
+      transformerAttributifyJsx()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
   });
 }
+var adminConfig = webConfig;
 
-// src/uno.datav.config.ts
-import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetUno as presetUno2, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
+// src/uno.web.rem.config.ts
+import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetUno as presetUno2, transformerAttributifyJsx as transformerAttributifyJsx2, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
 
 // src/units.ts
 var pxRE = /(-?[\.\d]+)px/g;
@@ -95,8 +106,8 @@ function pxToRemPreset(options = {}) {
   };
 }
 
-// src/uno.datav.config.ts
-function datavConfig(config = {}) {
+// src/uno.web.rem.config.ts
+function webRemConfig(config = {}) {
   return defineConfig2({
     shortcuts: shortcuts_default,
     presets: [
@@ -139,15 +150,26 @@ function datavConfig(config = {}) {
        * @see https://unocss.dev/transformers/compile-class
        * @example <div class=":uno: text-sm font-bold hover:text-red"/>
        */
-      transformerCompileClass2()
+      transformerCompileClass2(),
+      /**
+       * 开启jsx文件的属性模式
+       * @see https://unocss.dev/transformers/attributify-jsx
+       * @example ```
+       * export function Component() {
+       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
+       * }
+       * ```
+       */
+      transformerAttributifyJsx2()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
   });
 }
+var datavConfig = webRemConfig;
 
 // src/uno.h5.config.ts
-import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetUno as presetUno3, transformerAttributifyJsx, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
+import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetUno as presetUno3, transformerAttributifyJsx as transformerAttributifyJsx3, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
 function h5Config(config = {}) {
   return defineConfig3({
     shortcuts: shortcuts_default,
@@ -178,7 +200,7 @@ function h5Config(config = {}) {
        * 开启jsx文件的属性模式
        * @see https://unocss.dev/transformers/attributify-jsx
        */
-      transformerAttributifyJsx(),
+      transformerAttributifyJsx3(),
       /**
        * 启用 --uno: 功能
        * @see https://unocss.dev/transformers/directives
@@ -261,5 +283,7 @@ export {
   adminConfig,
   datavConfig,
   h5Config,
-  uniappConfig
+  uniappConfig,
+  webConfig,
+  webRemConfig
 };
