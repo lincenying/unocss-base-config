@@ -1,10 +1,10 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 import shortcuts from './shortcuts'
 import type { OpType } from './units'
 import { pxToRemPreset } from './units'
 
-export function datavConfig(config: OpType = {}) {
+export function webRemConfig(config: OpType = {}) {
     return defineConfig({
         shortcuts,
         presets: [
@@ -48,8 +48,20 @@ export function datavConfig(config: OpType = {}) {
              * @example <div class=":uno: text-sm font-bold hover:text-red"/>
              */
             transformerCompileClass(),
+            /**
+             * 开启jsx文件的属性模式
+             * @see https://unocss.dev/transformers/attributify-jsx
+             * @example ```
+             * export function Component() {
+             *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
+             * }
+             * ```
+             */
+            transformerAttributifyJsx(),
         ],
         safelist: 'svg-text1 svg-text2'.split(' '),
         rules: [],
     })
 }
+
+export const datavConfig = webRemConfig
