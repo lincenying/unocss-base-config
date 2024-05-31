@@ -2,7 +2,7 @@
   "name": "@lincy/base-config",
   "type": "module",
   "version": "1.2.1",
-  "packageManager": "pnpm@8.4.0",
+  "packageManager": "pnpm@9.1.0",
   "description": "Opinionated collection of common JavaScript / TypeScript utils by LCY",
   "author": "lincenying <lincenying@gmail.com>",
   "license": "MIT",
@@ -41,19 +41,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "unocss": "^0.58.7",
-    "unocss-applet": "^0.7.8"
+    "unocss": "^0.60.3",
+    "unocss-applet": "^0.8.1"
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.12",
-    "@lincy/eslint-config": "^4.2.6",
-    "@types/node": "^20.11.30",
-    "bumpp": "^9.4.0",
-    "eslint": "^8.57.0",
+    "@lincy/eslint-config": "^4.6.2",
+    "@types/node": "^20.12.13",
+    "bumpp": "^9.4.1",
+    "eslint": "^9.3.0",
     "esno": "^4.7.0",
     "simple-open-url": "^3.0.1",
     "tsup": "^8.0.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
