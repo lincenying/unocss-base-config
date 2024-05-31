@@ -276,7 +276,6 @@ var transformers = [];
 if (isApplet) {
   presets.push((0, import_unocss_applet.presetApplet)());
   transformers.push((0, import_unocss_applet.transformerAttributify)());
-  transformers.push((0, import_unocss_applet.transformerApplet)());
 } else {
   presets.push((0, import_unocss4.presetUno)());
   presets.push((0, import_unocss4.presetAttributify)());

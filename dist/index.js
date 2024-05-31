@@ -228,14 +228,13 @@ function h5Config(config = {}) {
 // src/uno.uniapp.config.ts
 import process from "process";
 import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetUno as presetUno4, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
-import { presetApplet, transformerApplet, transformerAttributify } from "unocss-applet";
+import { presetApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
 if (isApplet) {
   presets.push(presetApplet());
   transformers.push(transformerAttributify());
-  transformers.push(transformerApplet());
 } else {
   presets.push(presetUno4());
   presets.push(presetAttributify4());

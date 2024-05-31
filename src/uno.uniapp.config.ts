@@ -1,7 +1,7 @@
 import process from 'node:process'
 import type { Preset, SourceCodeTransformer } from 'unocss'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
-import { presetApplet, transformerApplet, transformerAttributify } from 'unocss-applet'
+import { presetApplet, transformerAttributify } from 'unocss-applet'
 import shortcuts from './shortcuts'
 import type { OpType } from './units'
 import { pxToRemPreset } from './units'
@@ -19,7 +19,6 @@ if (isApplet) {
     presets.push(presetApplet())
     // presets.push(presetRemRpx()) // 如果需要使用 rem 转 rpx 单位，需要启用此插件
     transformers.push(transformerAttributify())
-    transformers.push(transformerApplet())
 }
 else {
     /**
