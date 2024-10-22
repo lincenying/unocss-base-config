@@ -1,7 +1,7 @@
 import type { Preset } from '@unocss/core'
 
-const pxRE = /(-?[\.\d]+)px/g
-const remRE = /(-?[\.\d]+)rem/g
+const pxRE = /(-?[.\d]+)px/g
+const remRE = /(-?[.\d]+)rem/g
 
 export interface OpType {
     baseFontSize?: number
