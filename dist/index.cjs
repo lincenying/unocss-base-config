@@ -127,8 +127,8 @@ var adminConfig = webConfig;
 var import_unocss2 = require("unocss");
 
 // src/units.ts
-var pxRE = /(-?[\.\d]+)px/g;
-var remRE = /(-?[\.\d]+)rem/g;
+var pxRE = /(-?[.\d]+)px/g;
+var remRE = /(-?[.\d]+)rem/g;
 function pxToRemPreset(options = {}) {
   const { baseFontSize = 100, noneUnti2Rem = false, unti = "rem" } = options;
   return {

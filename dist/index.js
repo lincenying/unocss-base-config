@@ -86,8 +86,8 @@ var adminConfig = webConfig;
 import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetUno as presetUno2, transformerAttributifyJsx as transformerAttributifyJsx2, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
 
 // src/units.ts
-var pxRE = /(-?[\.\d]+)px/g;
-var remRE = /(-?[\.\d]+)rem/g;
+var pxRE = /(-?[.\d]+)px/g;
+var remRE = /(-?[.\d]+)rem/g;
 function pxToRemPreset(options = {}) {
   const { baseFontSize = 100, noneUnti2Rem = false, unti = "rem" } = options;
   return {
@@ -226,7 +226,7 @@ function h5Config(config = {}) {
 }
 
 // src/uno.uniapp.config.ts
-import process from "process";
+import process from "node:process";
 import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetUno as presetUno4, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
 import { presetApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
