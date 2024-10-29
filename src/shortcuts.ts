@@ -3,8 +3,8 @@ import type { UserShortcuts } from 'unocss'
 const shortcuts: UserShortcuts<object> = [
     [
         'btn',
-        'px-8px py-1px rounded inline-block bg-hex-3aced5ff text-white text-13px'
-        + 'cursor-pointer !outline-none hover:bg-hex-3aced5ee'
+        'px-8px py-1px rounded inline-block bg-hex-3aced5ff text-white text-13px '
+        + 'cursor-pointer !outline-none hover:bg-hex-3aced5ee '
         + 'disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50',
     ],
 

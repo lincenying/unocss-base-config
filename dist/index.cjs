@@ -46,7 +46,7 @@ var import_unocss = require("unocss");
 var shortcuts = [
   [
     "btn",
-    "px-8px py-1px rounded inline-block bg-hex-3aced5ff text-white text-13pxcursor-pointer !outline-none hover:bg-hex-3aced5eedisabled:cursor-default disabled:bg-gray-600 disabled:opacity-50"
+    "px-8px py-1px rounded inline-block bg-hex-3aced5ff text-white text-13px cursor-pointer !outline-none hover:bg-hex-3aced5ee disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50"
   ],
   ["icon-btn", "inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-hex-3aced5dd"],
   ["flex--c", "flex justify-start items-center"],
