@@ -39,14 +39,14 @@ __export(src_exports, {
 });
 module.exports = __toCommonJS(src_exports);
 
-// src/uno.web.config.ts
+// src/uno.h5.config.ts
 var import_unocss = require("unocss");
 
 // src/shortcuts.ts
 var shortcuts = [
   [
     "btn",
-    "px-8px py-1px rounded inline-block bg-hex-3aced5ff text-white text-13px cursor-pointer !outline-none hover:bg-hex-3aced5ee disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50"
+    "px-8px py-1px rounded inline-block bg-hex-3aced5ff text-white text-13pxcursor-pointer !outline-none hover:bg-hex-3aced5eedisabled:cursor-default disabled:bg-gray-600 disabled:opacity-50"
   ],
   ["icon-btn", "inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-hex-3aced5dd"],
   ["flex--c", "flex justify-start items-center"],
@@ -58,73 +58,17 @@ var shortcuts = [
   ["line-1", "text-truncate"],
   ["line-2", "text-truncate line-clamp-2"],
   ["line-3", "text-truncate line-clamp-3"],
-  ["line-4", "text-truncate line-clamp-4"]
+  ["line-4", "text-truncate line-clamp-4"],
+  ["text-xs", "text-12px lh-16px"],
+  ["text-sm", "text-14px lh-20px"],
+  ["text-base", "text-16px lh-24px"],
+  ["text-lg", "text-18px lh-28px"],
+  ["text-xl", "text-20px lh-28px"],
+  ["text-2xl", "text-24px lh-32px"],
+  ["text-3xl", "text-30px lh-36px"],
+  ["text-4xl", "text-36px lh-40px"]
 ];
 var shortcuts_default = shortcuts;
-
-// src/uno.web.config.ts
-function webConfig() {
-  return (0, import_unocss.defineConfig)({
-    shortcuts: shortcuts_default,
-    presets: [
-      /**
-       * 默认预设
-       * @see https://unocss.dev/presets/uno
-       */
-      (0, import_unocss.presetUno)(),
-      /**
-       * 开启属性模式
-       * @see https://unocss.dev/presets/attributify
-       * @example <div text="sm white" font="mono light"></div>
-       */
-      (0, import_unocss.presetAttributify)(),
-      /**
-       * 开启自定义图标模式
-       * @see https://unocss.dev/presets/icons
-       * @example <div i-<collection>-<icon></div>
-       */
-      (0, import_unocss.presetIcons)({
-        prefix: "i-"
-      })
-    ],
-    transformers: [
-      /**
-       * 启用 --uno: 功能
-       * @see https://unocss.dev/transformers/directives
-       * @example .custom-div { --uno: text-center my-0 font-medium; }
-       */
-      (0, import_unocss.transformerDirectives)(),
-      /**
-       * 启用 () 分组功能
-       * @see https://unocss.dev/transformers/variant-group
-       * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
-       */
-      (0, import_unocss.transformerVariantGroup)(),
-      /**
-       * 将一组classes编译为一个class
-       * @see https://unocss.dev/transformers/compile-class
-       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
-       */
-      (0, import_unocss.transformerCompileClass)(),
-      /**
-       * 开启jsx文件的属性模式
-       * @see https://unocss.dev/transformers/attributify-jsx
-       * @example ```
-       * export function Component() {
-       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
-       * }
-       * ```
-       */
-      (0, import_unocss.transformerAttributifyJsx)()
-    ],
-    safelist: "svg-text1 svg-text2".split(" "),
-    rules: []
-  });
-}
-var adminConfig = webConfig;
-
-// src/uno.web.rem.config.ts
-var import_unocss2 = require("unocss");
 
 // src/units.ts
 var pxRE = /(-?[.\d]+)px/g;
@@ -147,32 +91,92 @@ function pxToRemPreset(options = {}) {
   };
 }
 
-// src/uno.web.rem.config.ts
-function webRemConfig(config = {}) {
-  return (0, import_unocss2.defineConfig)({
+// src/uno.h5.config.ts
+function h5Config(config = {}) {
+  return (0, import_unocss.defineConfig)({
     shortcuts: shortcuts_default,
     presets: [
       /**
        * 默认预设
        * @see https://unocss.dev/presets/uno
        */
-      (0, import_unocss2.presetUno)(),
+      (0, import_unocss.presetUno)(),
       /**
        * 开启属性模式
        * @see https://unocss.dev/presets/attributify
        * @example <div text="sm white" font="mono light"></div>
        */
-      (0, import_unocss2.presetAttributify)(),
+      (0, import_unocss.presetAttributify)(),
       /**
        * 开启自定义图标模式
        * @see https://unocss.dev/presets/icons
        * @example <div i-<collection>-<icon></div>
        */
-      (0, import_unocss2.presetIcons)({
+      (0, import_unocss.presetIcons)({
         prefix: "i-"
       }),
       pxToRemPreset(config)
     ],
+    transformers: [
+      /**
+       * 开启jsx文件的属性模式
+       * @see https://unocss.dev/transformers/attributify-jsx
+       */
+      (0, import_unocss.transformerAttributifyJsx)(),
+      /**
+       * 启用 --uno: 功能
+       * @see https://unocss.dev/transformers/directives
+       * @example .custom-div { --uno: text-center my-0 font-medium; }
+       */
+      (0, import_unocss.transformerDirectives)(),
+      /**
+       * 启用 () 分组功能
+       * @see https://unocss.dev/transformers/variant-group
+       * @example <div class="hover:(bg-gray-400 font-medium) font-(light mono)"/>
+       */
+      (0, import_unocss.transformerVariantGroup)(),
+      /**
+       * 将一组classes编译为一个class
+       * @see https://unocss.dev/transformers/compile-class
+       * @example <div class=":uno: text-sm font-bold hover:text-red"/>
+       */
+      (0, import_unocss.transformerCompileClass)()
+    ],
+    safelist: "svg-text1 svg-text2".split(" "),
+    rules: []
+  });
+}
+
+// src/uno.uniapp.config.ts
+var import_node_process = __toESM(require("process"), 1);
+var import_unocss2 = require("unocss");
+var import_unocss_applet = require("unocss-applet");
+var isApplet = import_node_process.default.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
+var presets = [];
+var transformers = [];
+if (isApplet) {
+  presets.push((0, import_unocss_applet.presetApplet)());
+  transformers.push((0, import_unocss_applet.transformerAttributify)());
+} else {
+  presets.push((0, import_unocss2.presetUno)());
+  presets.push((0, import_unocss2.presetAttributify)());
+}
+function uniappConfig(config = {}) {
+  return (0, import_unocss2.defineConfig)({
+    presets: [
+      // 由 Iconify 提供支持的纯 CSS 图标解决方案
+      (0, import_unocss2.presetIcons)({
+        scale: 1,
+        warn: true
+      }),
+      ...presets,
+      ...[pxToRemPreset(config)]
+    ],
+    /**
+     * 自定义快捷语句
+     * @see https://github.com/unocss/unocss#shortcuts
+     */
+    shortcuts: shortcuts_default,
     transformers: [
       /**
        * 启用 --uno: 功能
@@ -192,26 +196,14 @@ function webRemConfig(config = {}) {
        * @example <div class=":uno: text-sm font-bold hover:text-red"/>
        */
       (0, import_unocss2.transformerCompileClass)(),
-      /**
-       * 开启jsx文件的属性模式
-       * @see https://unocss.dev/transformers/attributify-jsx
-       * @example ```
-       * export function Component() {
-       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
-       * }
-       * ```
-       */
-      (0, import_unocss2.transformerAttributifyJsx)()
-    ],
-    safelist: "svg-text1 svg-text2".split(" "),
-    rules: []
+      ...transformers
+    ]
   });
 }
-var datavConfig = webRemConfig;
 
-// src/uno.h5.config.ts
+// src/uno.web.config.ts
 var import_unocss3 = require("unocss");
-function h5Config(config = {}) {
+function webConfig() {
   return (0, import_unocss3.defineConfig)({
     shortcuts: shortcuts_default,
     presets: [
@@ -233,15 +225,9 @@ function h5Config(config = {}) {
        */
       (0, import_unocss3.presetIcons)({
         prefix: "i-"
-      }),
-      pxToRemPreset(config)
+      })
     ],
     transformers: [
-      /**
-       * 开启jsx文件的属性模式
-       * @see https://unocss.dev/transformers/attributify-jsx
-       */
-      (0, import_unocss3.transformerAttributifyJsx)(),
       /**
        * 启用 --uno: 功能
        * @see https://unocss.dev/transformers/directives
@@ -259,43 +245,51 @@ function h5Config(config = {}) {
        * @see https://unocss.dev/transformers/compile-class
        * @example <div class=":uno: text-sm font-bold hover:text-red"/>
        */
-      (0, import_unocss3.transformerCompileClass)()
+      (0, import_unocss3.transformerCompileClass)(),
+      /**
+       * 开启jsx文件的属性模式
+       * @see https://unocss.dev/transformers/attributify-jsx
+       * @example ```
+       * export function Component() {
+       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
+       * }
+       * ```
+       */
+      (0, import_unocss3.transformerAttributifyJsx)()
     ],
     safelist: "svg-text1 svg-text2".split(" "),
     rules: []
   });
 }
+var adminConfig = webConfig;
 
-// src/uno.uniapp.config.ts
-var import_node_process = __toESM(require("process"), 1);
+// src/uno.web.rem.config.ts
 var import_unocss4 = require("unocss");
-var import_unocss_applet = require("unocss-applet");
-var isApplet = import_node_process.default.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
-var presets = [];
-var transformers = [];
-if (isApplet) {
-  presets.push((0, import_unocss_applet.presetApplet)());
-  transformers.push((0, import_unocss_applet.transformerAttributify)());
-} else {
-  presets.push((0, import_unocss4.presetUno)());
-  presets.push((0, import_unocss4.presetAttributify)());
-}
-function uniappConfig(config = {}) {
+function webRemConfig(config = {}) {
   return (0, import_unocss4.defineConfig)({
-    presets: [
-      // 由 Iconify 提供支持的纯 CSS 图标解决方案
-      (0, import_unocss4.presetIcons)({
-        scale: 1,
-        warn: true
-      }),
-      ...presets,
-      ...[pxToRemPreset(config)]
-    ],
-    /**
-     * 自定义快捷语句
-     * @see https://github.com/unocss/unocss#shortcuts
-     */
     shortcuts: shortcuts_default,
+    presets: [
+      /**
+       * 默认预设
+       * @see https://unocss.dev/presets/uno
+       */
+      (0, import_unocss4.presetUno)(),
+      /**
+       * 开启属性模式
+       * @see https://unocss.dev/presets/attributify
+       * @example <div text="sm white" font="mono light"></div>
+       */
+      (0, import_unocss4.presetAttributify)(),
+      /**
+       * 开启自定义图标模式
+       * @see https://unocss.dev/presets/icons
+       * @example <div i-<collection>-<icon></div>
+       */
+      (0, import_unocss4.presetIcons)({
+        prefix: "i-"
+      }),
+      pxToRemPreset(config)
+    ],
     transformers: [
       /**
        * 启用 --uno: 功能
@@ -315,10 +309,22 @@ function uniappConfig(config = {}) {
        * @example <div class=":uno: text-sm font-bold hover:text-red"/>
        */
       (0, import_unocss4.transformerCompileClass)(),
-      ...transformers
-    ]
+      /**
+       * 开启jsx文件的属性模式
+       * @see https://unocss.dev/transformers/attributify-jsx
+       * @example ```
+       * export function Component() {
+       *   return ( <div text-red text-center text-5xl animate-bounce>unocss</div> )
+       * }
+       * ```
+       */
+      (0, import_unocss4.transformerAttributifyJsx)()
+    ],
+    safelist: "svg-text1 svg-text2".split(" "),
+    rules: []
   });
 }
+var datavConfig = webRemConfig;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   adminConfig,
