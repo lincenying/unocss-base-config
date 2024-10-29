@@ -1,9 +1,10 @@
-import process from 'node:process'
 import type { Preset, SourceCodeTransformer } from 'unocss'
+import type { OpType } from './units'
+
+import process from 'node:process'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerAttributify } from 'unocss-applet'
 import shortcuts from './shortcuts'
-import type { OpType } from './units'
 import { pxToRemPreset } from './units'
 
 const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false

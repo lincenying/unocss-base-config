@@ -1,6 +1,7 @@
+import type { OpType } from './units'
+
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import shortcuts from './shortcuts'
-import type { OpType } from './units'
 import { pxToRemPreset } from './units'
 
 export function h5Config(config: OpType = {}) {
