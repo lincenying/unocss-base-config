@@ -1,7 +1,7 @@
 {
   "name": "@lincy/base-config",
   "type": "module",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "packageManager": "pnpm@9.1.0",
   "description": "Opinionated collection of common JavaScript / TypeScript utils by LCY",
   "author": "lincenying <lincenying@gmail.com>",
