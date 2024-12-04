@@ -1,16 +1,16 @@
-# @lincy/base-config
+# @lincy/unocss-base-config
 
 Usage
 
 ```bash
-pnpm install @lincy/base-config
+pnpm install @lincy/unocss-base-config
 ```
 
 #### 用于一般 web 的配置
 
 uno.config.ts
 ```ts
-import { adminConfig } from '@lincy/base-config'
+import { adminConfig } from '@lincy/unocss-base-config'
 
 export default adminConfig()
 ```
@@ -30,12 +30,11 @@ export default adminConfig()
 - transformerCompileClass
   相关文档: https://unocss.dev/transformers/compile-class
 
-
 #### 用于 datav 的配置
 
 uno.config.ts
 ```ts
-import { datavConfig } from '@lincy/base-config'
+import { datavConfig } from '@lincy/unocss-base-config'
 
 const baseConfig = datavConfig({ baseFontSize: 100 })
 
@@ -65,12 +64,11 @@ export default {
 - transformerCompileClass
   相关文档: https://unocss.dev/transformers/compile-class
 
-
 #### 用于 H5 的配置
 
 uno.config.ts
 ```ts
-import { h5Config } from '@lincy/base-config'
+import { h5Config } from '@lincy/unocss-base-config'
 
 export default h5Config({
     baseFontSize: 37.5,
@@ -97,12 +95,11 @@ export default h5Config({
 - transformerCompileClass
   相关文档: https://unocss.dev/transformers/compile-class
 
-
 #### 用于 UniApp 的配置
 
 uno.config.ts
 ```ts
-import { uniappConfig } from '@lincy/base-config'
+import { uniappConfig } from '@lincy/unocss-base-config'
 
 export default uniappConfig({
     baseFontSize: 1,
