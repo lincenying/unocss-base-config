@@ -3,7 +3,7 @@
   "type": "module",
   "version": "2.0.0",
   "packageManager": "pnpm@9.14.4",
-  "description": "Opinionated collection of common JavaScript / TypeScript utils by LCY",
+  "description": "Unocss H5,Web,Rem,Uniapp 默认配置",
   "author": "lincenying <lincenying@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/lincenying/unocss-base-config#readme",
