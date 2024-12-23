@@ -4,6 +4,7 @@ import type { OpType } from './units'
 import process from 'node:process'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerAttributify } from 'unocss-applet'
+import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 import { pxToRemPreset } from './units'
 
@@ -73,5 +74,8 @@ export function uniappConfig(config: OpType = {}) {
 
             ...transformers,
         ],
+        theme: {
+            breakpoints,
+        },
     })
 }

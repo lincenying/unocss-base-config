@@ -1,6 +1,7 @@
 import type { OpType } from './units'
 
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 import { pxToRemPreset } from './units'
 
@@ -61,6 +62,9 @@ export function webRemConfig(config: OpType = {}) {
         ],
         safelist: 'svg-text1 svg-text2'.split(' '),
         rules: [],
+        theme: {
+            breakpoints,
+        },
     })
 }
 

@@ -1,4 +1,5 @@
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 
 export function webConfig() {
@@ -57,6 +58,9 @@ export function webConfig() {
         ],
         safelist: 'svg-text1 svg-text2'.split(' '),
         rules: [],
+        theme: {
+            breakpoints,
+        },
     })
 }
 
