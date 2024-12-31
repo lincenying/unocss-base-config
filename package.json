@@ -1,7 +1,7 @@
 {
   "name": "@lincy/unocss-base-config",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "packageManager": "pnpm@9.15.2",
   "description": "Unocss H5,Web,Rem,Uniapp 默认配置",
   "author": "lincenying <lincenying@gmail.com>",
