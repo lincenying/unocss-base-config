@@ -15,7 +15,7 @@ const presets: Preset[] = []
 const transformers: SourceCodeTransformer[] = []
 
 export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig: boolean | TransformerAttributifyOptions = true) {
-    const disableAttr = typeof wxAttrConfig === 'boolean' ? wxAttrConfig : true
+    const disableAttr = typeof wxAttrConfig === 'boolean' ? wxAttrConfig : false
     const attrConfig = typeof wxAttrConfig === 'boolean' ? { } : wxAttrConfig
 
     if (isApplet) {

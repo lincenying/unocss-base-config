@@ -142,7 +142,7 @@ var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
 function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
-  const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : true;
+  const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : false;
   const attrConfig = typeof wxAttrConfig === "boolean" ? {} : wxAttrConfig;
   if (isApplet) {
     presets.push(presetApplet());

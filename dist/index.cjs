@@ -183,7 +183,7 @@ var isApplet = import_node_process.default.env?.UNI_PLATFORM?.startsWith("mp-") 
 var presets = [];
 var transformers = [];
 function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
-  const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : true;
+  const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : false;
   const attrConfig = typeof wxAttrConfig === "boolean" ? {} : wxAttrConfig;
   if (isApplet) {
     presets.push((0, import_unocss_applet.presetApplet)());
