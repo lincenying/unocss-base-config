@@ -107,8 +107,37 @@ export default uniappConfig({
     unti: 'rpx',
     /** 转换的目标单位 */
     noneUnti2Rem: false,
-    /** 是否禁用属性预设 */
-    disableAttr: false
+}, {
+    /**
+     * @default 'un-'
+     */
+    prefix: 'un-',
+    /**
+     * 仅匹配前缀属性
+     *
+     * @default false
+     */
+    prefixedOnly: false,
+    /**
+     * 支持匹配无值属性
+     *
+     * For example
+     * ```html
+     * <div mt-2 />
+     * ```
+     *
+     * @default true
+     */
+    nonValuedAttribute: true,
+    /**
+     * 提取时要忽略的属性列表
+     */
+    ignoreAttributes: ['color', 'size', 'fill', 'type'],
+    /**
+     * 删除在 `class=""` 中添加的属性
+     * @default true
+     */
+    deleteAttributes: true
 })
 ```
 ##### 启用的 presets

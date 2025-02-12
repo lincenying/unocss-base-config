@@ -117,7 +117,7 @@ function pxToRemPreset(options = {}) {
 }
 
 // src/uno.h5.config.ts
-function h5Config(config = {}) {
+function h5Config(pxToRemconfig = {}) {
   return (0, import_unocss.defineConfig)({
     shortcuts: shortcuts_default,
     presets: [
@@ -140,7 +140,7 @@ function h5Config(config = {}) {
       (0, import_unocss.presetIcons)({
         prefix: "i-"
       }),
-      pxToRemPreset(config)
+      pxToRemPreset(pxToRemconfig)
     ],
     transformers: [
       /**
@@ -182,14 +182,16 @@ var import_unocss_applet = require("unocss-applet");
 var isApplet = import_node_process.default.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
-function uniappConfig(config = {}) {
+function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
+  const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : true;
+  const attrConfig = typeof wxAttrConfig === "boolean" ? {} : wxAttrConfig;
   if (isApplet) {
     presets.push((0, import_unocss_applet.presetApplet)());
-    if (!config.disableAttr)
-      transformers.push((0, import_unocss_applet.transformerAttributify)());
+    if (!disableAttr)
+      transformers.push((0, import_unocss_applet.transformerAttributify)(attrConfig));
   } else {
     presets.push((0, import_unocss2.presetUno)());
-    if (!config.disableAttr)
+    if (!disableAttr)
       presets.push((0, import_unocss2.presetAttributify)());
   }
   return (0, import_unocss2.defineConfig)({
@@ -200,7 +202,7 @@ function uniappConfig(config = {}) {
         warn: true
       }),
       ...presets,
-      ...[pxToRemPreset(config)]
+      ...[pxToRemPreset(pxToRemConfig)]
     ],
     /**
      * 自定义快捷语句
@@ -301,7 +303,7 @@ var adminConfig = webConfig;
 
 // src/uno.web.rem.config.ts
 var import_unocss4 = require("unocss");
-function webRemConfig(config = {}) {
+function webRemConfig(pxToRemconfig = {}) {
   return (0, import_unocss4.defineConfig)({
     shortcuts: shortcuts_default,
     presets: [
@@ -324,7 +326,7 @@ function webRemConfig(config = {}) {
       (0, import_unocss4.presetIcons)({
         prefix: "i-"
       }),
-      pxToRemPreset(config)
+      pxToRemPreset(pxToRemconfig)
     ],
     transformers: [
       /**

@@ -76,7 +76,7 @@ function pxToRemPreset(options = {}) {
 }
 
 // src/uno.h5.config.ts
-function h5Config(config = {}) {
+function h5Config(pxToRemconfig = {}) {
   return defineConfig({
     shortcuts: shortcuts_default,
     presets: [
@@ -99,7 +99,7 @@ function h5Config(config = {}) {
       presetIcons({
         prefix: "i-"
       }),
-      pxToRemPreset(config)
+      pxToRemPreset(pxToRemconfig)
     ],
     transformers: [
       /**
@@ -141,14 +141,16 @@ import { presetApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
-function uniappConfig(config = {}) {
+function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
+  const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : true;
+  const attrConfig = typeof wxAttrConfig === "boolean" ? {} : wxAttrConfig;
   if (isApplet) {
     presets.push(presetApplet());
-    if (!config.disableAttr)
-      transformers.push(transformerAttributify());
+    if (!disableAttr)
+      transformers.push(transformerAttributify(attrConfig));
   } else {
     presets.push(presetUno2());
-    if (!config.disableAttr)
+    if (!disableAttr)
       presets.push(presetAttributify2());
   }
   return defineConfig2({
@@ -159,7 +161,7 @@ function uniappConfig(config = {}) {
         warn: true
       }),
       ...presets,
-      ...[pxToRemPreset(config)]
+      ...[pxToRemPreset(pxToRemConfig)]
     ],
     /**
      * 自定义快捷语句
@@ -260,7 +262,7 @@ var adminConfig = webConfig;
 
 // src/uno.web.rem.config.ts
 import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetUno as presetUno4, transformerAttributifyJsx as transformerAttributifyJsx3, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
-function webRemConfig(config = {}) {
+function webRemConfig(pxToRemconfig = {}) {
   return defineConfig4({
     shortcuts: shortcuts_default,
     presets: [
@@ -283,7 +285,7 @@ function webRemConfig(config = {}) {
       presetIcons4({
         prefix: "i-"
       }),
-      pxToRemPreset(config)
+      pxToRemPreset(pxToRemconfig)
     ],
     transformers: [
       /**

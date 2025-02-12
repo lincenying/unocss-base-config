@@ -1,11 +1,10 @@
-import type { OpType } from './units'
-
+import type { PxToRemConfigType } from './types'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 import { pxToRemPreset } from './units'
 
-export function webRemConfig(config: OpType = {}) {
+export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}) {
     return defineConfig({
         shortcuts,
         presets: [
@@ -28,7 +27,7 @@ export function webRemConfig(config: OpType = {}) {
             presetIcons({
                 prefix: 'i-',
             }),
-            pxToRemPreset(config),
+            pxToRemPreset(pxToRemconfig),
         ],
         transformers: [
             /**

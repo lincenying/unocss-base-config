@@ -1,6 +1,7 @@
 import type { Preset, SourceCodeTransformer } from 'unocss'
-import type { OpType } from './units'
+import type { TransformerAttributifyOptions } from 'unocss-applet'
 
+import type { PxToRemConfigType } from './types'
 import process from 'node:process'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerAttributify } from 'unocss-applet'
@@ -13,7 +14,10 @@ const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
 const presets: Preset[] = []
 const transformers: SourceCodeTransformer[] = []
 
-export function uniappConfig(config: OpType = {}) {
+export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig: boolean | TransformerAttributifyOptions = true) {
+    const disableAttr = typeof wxAttrConfig === 'boolean' ? wxAttrConfig : true
+    const attrConfig = typeof wxAttrConfig === 'boolean' ? { } : wxAttrConfig
+
     if (isApplet) {
         /**
          * UnoCSS Applet
@@ -21,8 +25,8 @@ export function uniappConfig(config: OpType = {}) {
          */
         presets.push(presetApplet())
         // presets.push(presetRemRpx()) // 如果需要使用 rem 转 rpx 单位，需要启用此插件
-        if (!config.disableAttr)
-            transformers.push(transformerAttributify())
+        if (!disableAttr)
+            transformers.push(transformerAttributify(attrConfig))
     }
     else {
         /**
@@ -35,7 +39,7 @@ export function uniappConfig(config: OpType = {}) {
          * @see https://unocss.dev/presets/attributify
          * @example <div text="sm white" font="mono light"></div>
          */
-        if (!config.disableAttr)
+        if (!disableAttr)
             presets.push(presetAttributify())
     }
 
@@ -47,7 +51,7 @@ export function uniappConfig(config: OpType = {}) {
                 warn: true,
             }),
             ...presets,
-            ...[pxToRemPreset(config)],
+            ...[pxToRemPreset(pxToRemConfig)],
         ],
         /**
          * 自定义快捷语句
