@@ -13,30 +13,32 @@ const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
 const presets: Preset[] = []
 const transformers: SourceCodeTransformer[] = []
 
-if (isApplet) {
-    /**
-     * UnoCSS Applet
-     * @see https://github.com/unocss-applet/unocss-applet
-     */
-    presets.push(presetApplet())
-    // presets.push(presetRemRpx()) // 如果需要使用 rem 转 rpx 单位，需要启用此插件
-    transformers.push(transformerAttributify())
-}
-else {
-    /**
-     * 默认预设
-     * @see https://unocss.dev/presets/uno
-     */
-    presets.push(presetUno())
-    /**
-     * 开启属性模式
-     * @see https://unocss.dev/presets/attributify
-     * @example <div text="sm white" font="mono light"></div>
-     */
-    presets.push(presetAttributify())
-}
-
 export function uniappConfig(config: OpType = {}) {
+    if (isApplet) {
+        /**
+         * UnoCSS Applet
+         * @see https://github.com/unocss-applet/unocss-applet
+         */
+        presets.push(presetApplet())
+        // presets.push(presetRemRpx()) // 如果需要使用 rem 转 rpx 单位，需要启用此插件
+        if (!config.disableAttr)
+            transformers.push(transformerAttributify())
+    }
+    else {
+        /**
+         * 默认预设
+         * @see https://unocss.dev/presets/uno
+         */
+        presets.push(presetUno())
+        /**
+         * 开启属性模式
+         * @see https://unocss.dev/presets/attributify
+         * @example <div text="sm white" font="mono light"></div>
+         */
+        if (!config.disableAttr)
+            presets.push(presetAttributify())
+    }
+
     return defineConfig({
         presets: [
             // 由 Iconify 提供支持的纯 CSS 图标解决方案

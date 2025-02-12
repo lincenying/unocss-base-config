@@ -5,8 +5,12 @@ const remRE = /(-?[.\d]+)rem/g
 
 export interface OpType {
     baseFontSize?: number
+    /** 是否将无单位属性还原成rem单位 */
     noneUnti2Rem?: boolean
+    /** 转换的目标单位 */
     unti?: 'rem' | 'rpx'
+    /** 是否禁用属性预设 */
+    disableAttr?: boolean
 }
 
 export function pxToRemPreset(options: OpType = {}): Preset {

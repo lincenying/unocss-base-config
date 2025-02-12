@@ -30,7 +30,7 @@ export default adminConfig()
 - transformerCompileClass
   相关文档: https://unocss.dev/transformers/compile-class
 
-#### 用于 datav 的配置
+#### 用于 web-rem 的配置
 
 uno.config.ts
 ```ts
@@ -103,7 +103,12 @@ import { uniappConfig } from '@lincy/unocss-base-config'
 
 export default uniappConfig({
     baseFontSize: 1,
+    /** 是否将无单位属性还原成rem单位 */
     unti: 'rpx',
+    /** 转换的目标单位 */
+    noneUnti2Rem: false,
+    /** 是否禁用属性预设 */
+    disableAttr: false
 })
 ```
 ##### 启用的 presets
