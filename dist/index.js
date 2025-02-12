@@ -141,14 +141,16 @@ import { presetApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
-if (isApplet) {
-  presets.push(presetApplet());
-  transformers.push(transformerAttributify());
-} else {
-  presets.push(presetUno2());
-  presets.push(presetAttributify2());
-}
 function uniappConfig(config = {}) {
+  if (isApplet) {
+    presets.push(presetApplet());
+    if (!config.disableAttr)
+      transformers.push(transformerAttributify());
+  } else {
+    presets.push(presetUno2());
+    if (!config.disableAttr)
+      presets.push(presetAttributify2());
+  }
   return defineConfig2({
     presets: [
       // 由 Iconify 提供支持的纯 CSS 图标解决方案

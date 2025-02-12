@@ -182,14 +182,16 @@ var import_unocss_applet = require("unocss-applet");
 var isApplet = import_node_process.default.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
-if (isApplet) {
-  presets.push((0, import_unocss_applet.presetApplet)());
-  transformers.push((0, import_unocss_applet.transformerAttributify)());
-} else {
-  presets.push((0, import_unocss2.presetUno)());
-  presets.push((0, import_unocss2.presetAttributify)());
-}
 function uniappConfig(config = {}) {
+  if (isApplet) {
+    presets.push((0, import_unocss_applet.presetApplet)());
+    if (!config.disableAttr)
+      transformers.push((0, import_unocss_applet.transformerAttributify)());
+  } else {
+    presets.push((0, import_unocss2.presetUno)());
+    if (!config.disableAttr)
+      presets.push((0, import_unocss2.presetAttributify)());
+  }
   return (0, import_unocss2.defineConfig)({
     presets: [
       // 由 Iconify 提供支持的纯 CSS 图标解决方案
