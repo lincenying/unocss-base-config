@@ -103,9 +103,9 @@ import { uniappConfig } from '@lincy/unocss-base-config'
 
 export default uniappConfig({
     baseFontSize: 1,
-    /** 是否将无单位属性还原成rem单位 */
-    unti: 'rpx',
     /** 转换的目标单位 */
+    unti: 'rpx',
+    /** 是否将无单位属性还原成rem单位 */
     noneUnti2Rem: false,
 }, {
     /**
