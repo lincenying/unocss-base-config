@@ -28,8 +28,8 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
-var src_exports = {};
-__export(src_exports, {
+var index_exports = {};
+__export(index_exports, {
   adminConfig: () => adminConfig,
   datavConfig: () => datavConfig,
   h5Config: () => h5Config,
@@ -37,7 +37,7 @@ __export(src_exports, {
   webConfig: () => webConfig,
   webRemConfig: () => webRemConfig
 });
-module.exports = __toCommonJS(src_exports);
+module.exports = __toCommonJS(index_exports);
 
 // src/uno.h5.config.ts
 var import_unocss = require("unocss");
@@ -125,7 +125,7 @@ function h5Config(pxToRemconfig = {}) {
        * 默认预设
        * @see https://unocss.dev/presets/uno
        */
-      (0, import_unocss.presetUno)(),
+      (0, import_unocss.presetWind3)(),
       /**
        * 开启属性模式
        * @see https://unocss.dev/presets/attributify
@@ -190,7 +190,7 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
     if (!disableAttr)
       transformers.push((0, import_unocss_applet.transformerAttributify)(attrConfig));
   } else {
-    presets.push((0, import_unocss2.presetUno)());
+    presets.push((0, import_unocss2.presetWind3)());
     if (!disableAttr)
       presets.push((0, import_unocss2.presetAttributify)());
   }
@@ -246,7 +246,7 @@ function webConfig() {
        * 默认预设
        * @see https://unocss.dev/presets/uno
        */
-      (0, import_unocss3.presetUno)(),
+      (0, import_unocss3.presetWind3)(),
       /**
        * 开启属性模式
        * @see https://unocss.dev/presets/attributify
@@ -311,7 +311,7 @@ function webRemConfig(pxToRemconfig = {}) {
        * 默认预设
        * @see https://unocss.dev/presets/uno
        */
-      (0, import_unocss4.presetUno)(),
+      (0, import_unocss4.presetWind3)(),
       /**
        * 开启属性模式
        * @see https://unocss.dev/presets/attributify

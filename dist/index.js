@@ -1,5 +1,5 @@
 // src/uno.h5.config.ts
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
+import { defineConfig, presetAttributify, presetIcons, presetWind3, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
 
 // src/breakpoints.ts
 var breakpoints = {
@@ -84,7 +84,7 @@ function h5Config(pxToRemconfig = {}) {
        * 默认预设
        * @see https://unocss.dev/presets/uno
        */
-      presetUno(),
+      presetWind3(),
       /**
        * 开启属性模式
        * @see https://unocss.dev/presets/attributify
@@ -135,8 +135,8 @@ function h5Config(pxToRemconfig = {}) {
 }
 
 // src/uno.uniapp.config.ts
-import process from "node:process";
-import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetUno as presetUno2, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
+import process from "process";
+import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetWind3 as presetWind32, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
 import { presetApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
@@ -149,7 +149,7 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
     if (!disableAttr)
       transformers.push(transformerAttributify(attrConfig));
   } else {
-    presets.push(presetUno2());
+    presets.push(presetWind32());
     if (!disableAttr)
       presets.push(presetAttributify2());
   }
@@ -196,7 +196,7 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
 }
 
 // src/uno.web.config.ts
-import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetUno as presetUno3, transformerAttributifyJsx as transformerAttributifyJsx2, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
+import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetWind3 as presetWind33, transformerAttributifyJsx as transformerAttributifyJsx2, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
 function webConfig() {
   return defineConfig3({
     shortcuts: shortcuts_default,
@@ -205,7 +205,7 @@ function webConfig() {
        * 默认预设
        * @see https://unocss.dev/presets/uno
        */
-      presetUno3(),
+      presetWind33(),
       /**
        * 开启属性模式
        * @see https://unocss.dev/presets/attributify
@@ -261,7 +261,7 @@ function webConfig() {
 var adminConfig = webConfig;
 
 // src/uno.web.rem.config.ts
-import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetUno as presetUno4, transformerAttributifyJsx as transformerAttributifyJsx3, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
+import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetWind3 as presetWind34, transformerAttributifyJsx as transformerAttributifyJsx3, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
 function webRemConfig(pxToRemconfig = {}) {
   return defineConfig4({
     shortcuts: shortcuts_default,
@@ -270,7 +270,7 @@ function webRemConfig(pxToRemconfig = {}) {
        * 默认预设
        * @see https://unocss.dev/presets/uno
        */
-      presetUno4(),
+      presetWind34(),
       /**
        * 开启属性模式
        * @see https://unocss.dev/presets/attributify
