@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetWind3, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 
@@ -10,7 +10,7 @@ export function webConfig() {
              * 默认预设
              * @see https://unocss.dev/presets/uno
              */
-            presetUno(),
+            presetWind3(),
             /**
              * 开启属性模式
              * @see https://unocss.dev/presets/attributify

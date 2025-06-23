@@ -3,7 +3,7 @@ import type { TransformerAttributifyOptions } from 'unocss-applet'
 
 import type { PxToRemConfigType } from './types'
 import process from 'node:process'
-import { defineConfig, presetAttributify, presetIcons, presetUno, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetWind3, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerAttributify } from 'unocss-applet'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
@@ -33,7 +33,7 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
          * 默认预设
          * @see https://unocss.dev/presets/uno
          */
-        presets.push(presetUno())
+        presets.push(presetWind3())
         /**
          * 开启属性模式
          * @see https://unocss.dev/presets/attributify
