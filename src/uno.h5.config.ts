@@ -54,7 +54,7 @@ export function h5Config(pxToRemconfig: PxToRemConfigType = {}) {
              */
             transformerCompileClass(),
         ],
-        safelist: 'svg-text1 svg-text2'.split(' '),
+        safelist: [],
         rules: [],
         theme: {
             breakpoints,

@@ -56,7 +56,7 @@ export function webConfig() {
              */
             transformerAttributifyJsx(),
         ],
-        safelist: 'svg-text1 svg-text2'.split(' '),
+        safelist: ['svg-text1', 'svg-text2'],
         rules: [],
         theme: {
             breakpoints,

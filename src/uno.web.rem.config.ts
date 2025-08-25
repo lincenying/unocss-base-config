@@ -59,7 +59,7 @@ export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}) {
              */
             transformerAttributifyJsx(),
         ],
-        safelist: 'svg-text1 svg-text2'.split(' '),
+        safelist: [],
         rules: [],
         theme: {
             breakpoints,

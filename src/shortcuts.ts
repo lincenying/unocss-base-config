@@ -25,12 +25,18 @@ const shortcuts: UserShortcuts<object> = [
 
     ['text-xs', 'text-12px lh-16px'],
     ['text-sm', 'text-14px lh-20px'],
+    ['text-tiny', 'text-14px lh-20px'],
     ['text-base', 'text-16px lh-24px'],
     ['text-lg', 'text-18px lh-28px'],
     ['text-xl', 'text-20px lh-28px'],
     ['text-2xl', 'text-24px lh-32px'],
     ['text-3xl', 'text-30px lh-36px'],
     ['text-4xl', 'text-36px lh-40px'],
+    ['text-5xl', 'text-48px lh-60px'],
+    ['text-6xl', 'text-64px lh-72px'],
+    ['text-7xl', 'text-80px lh-88px'],
+    ['text-8xl', 'text-96px lh-104px'],
+    ['text-9xl', 'text-128px lh-136px'],
 ]
 
 export default shortcuts
