@@ -145,7 +145,7 @@ function h5Config(pxToRemconfig = {}, preset = "wind3") {
     presets2.push((0, import_unocss.presetWind4)());
   } else if (preset === "mini") {
     presets2.push((0, import_unocss.presetMini)());
-  } else {
+  } else if (preset === "wind3") {
     presets2.push((0, import_unocss.presetWind3)());
   }
   return (0, import_unocss.defineConfig)({
@@ -203,7 +203,7 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3")
       presets.push((0, import_unocss2.presetWind4)());
     } else if (preset === "mini") {
       presets.push((0, import_unocss2.presetMini)());
-    } else {
+    } else if (preset === "wind3") {
       presets.push((0, import_unocss2.presetWind3)());
     }
     if (!disableAttr)
@@ -274,7 +274,7 @@ function webConfig(preset = "wind3") {
     presets2.push((0, import_unocss3.presetWind4)());
   } else if (preset === "mini") {
     presets2.push((0, import_unocss3.presetMini)());
-  } else {
+  } else if (preset === "wind3") {
     presets2.push((0, import_unocss3.presetWind3)());
   }
   return (0, import_unocss3.defineConfig)({
@@ -343,7 +343,7 @@ function webRemConfig(pxToRemconfig = {}, preset = "wind3") {
     presets2.push((0, import_unocss4.presetWind4)());
   } else if (preset === "mini") {
     presets2.push((0, import_unocss4.presetMini)());
-  } else {
+  } else if (preset === "wind3") {
     presets2.push((0, import_unocss4.presetWind3)());
   }
   return (0, import_unocss4.defineConfig)({

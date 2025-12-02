@@ -104,7 +104,7 @@ function h5Config(pxToRemconfig = {}, preset = "wind3") {
     presets2.push(presetWind4());
   } else if (preset === "mini") {
     presets2.push(presetMini());
-  } else {
+  } else if (preset === "wind3") {
     presets2.push(presetWind3());
   }
   return defineConfig({
@@ -162,7 +162,7 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3")
       presets.push(presetWind42());
     } else if (preset === "mini") {
       presets.push(presetMini2());
-    } else {
+    } else if (preset === "wind3") {
       presets.push(presetWind32());
     }
     if (!disableAttr)
@@ -233,7 +233,7 @@ function webConfig(preset = "wind3") {
     presets2.push(presetWind43());
   } else if (preset === "mini") {
     presets2.push(presetMini3());
-  } else {
+  } else if (preset === "wind3") {
     presets2.push(presetWind33());
   }
   return defineConfig3({
@@ -302,7 +302,7 @@ function webRemConfig(pxToRemconfig = {}, preset = "wind3") {
     presets2.push(presetWind44());
   } else if (preset === "mini") {
     presets2.push(presetMini4());
-  } else {
+  } else if (preset === "wind3") {
     presets2.push(presetWind34());
   }
   return defineConfig4({
