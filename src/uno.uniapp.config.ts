@@ -3,7 +3,7 @@ import type { TransformerAttributifyOptions } from 'unocss-applet'
 
 import type { PxToRemConfigType } from './types'
 import process from 'node:process'
-import { defineConfig, presetAttributify, presetIcons, presetWind3, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerAttributify } from 'unocss-applet'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
@@ -14,10 +14,18 @@ const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
 const presets: Preset[] = []
 const transformers: SourceCodeTransformer[] = []
 
-export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig: boolean | TransformerAttributifyOptions = true) {
+/**
+ * 配置 UnoCSS 用于 UniApp 项目的函数
+ * @param pxToRemConfig px转rem的配置选项
+ * @param wxAttrConfig 是否启用属性化模式或配置选项
+ * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
+ * @returns 返回 UnoCSS 的配置对象
+ */
+export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig: boolean | TransformerAttributifyOptions = true, preset: 'wind3' | 'wind4' | 'mini' = 'wind3') {
     const disableAttr = typeof wxAttrConfig === 'boolean' ? wxAttrConfig : false
     const attrConfig = typeof wxAttrConfig === 'boolean' ? { } : wxAttrConfig
 
+    // 小程序平台特殊处理
     if (isApplet) {
         /**
          * UnoCSS Applet
@@ -33,7 +41,15 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
          * 默认预设
          * @see https://unocss.dev/presets/uno
          */
-        presets.push(presetWind3())
+        if (preset === 'wind4') {
+            presets.push(presetWind4())
+        }
+        else if (preset === 'mini') {
+            presets.push(presetMini())
+        }
+        else if (preset === 'wind3') {
+            presets.push(presetWind3())
+        }
         /**
          * 开启属性模式
          * @see https://unocss.dev/presets/attributify

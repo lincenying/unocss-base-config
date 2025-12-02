@@ -1,5 +1,5 @@
 // src/uno.h5.config.ts
-import { defineConfig, presetAttributify, presetIcons, presetWind3, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
+import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
 
 // src/breakpoints.ts
 var breakpoints = {
@@ -45,12 +45,18 @@ var shortcuts = [
   ["line-4", "text-truncate line-clamp-4"],
   ["text-xs", "text-12px lh-16px"],
   ["text-sm", "text-14px lh-20px"],
+  ["text-tiny", "text-14px lh-20px"],
   ["text-base", "text-16px lh-24px"],
   ["text-lg", "text-18px lh-28px"],
   ["text-xl", "text-20px lh-28px"],
   ["text-2xl", "text-24px lh-32px"],
   ["text-3xl", "text-30px lh-36px"],
-  ["text-4xl", "text-36px lh-40px"]
+  ["text-4xl", "text-36px lh-40px"],
+  ["text-5xl", "text-48px lh-60px"],
+  ["text-6xl", "text-64px lh-72px"],
+  ["text-7xl", "text-80px lh-88px"],
+  ["text-8xl", "text-96px lh-104px"],
+  ["text-9xl", "text-128px lh-136px"]
 ];
 var shortcuts_default = shortcuts;
 
@@ -76,31 +82,34 @@ function pxToRemPreset(options = {}) {
 }
 
 // src/uno.h5.config.ts
-function h5Config(pxToRemconfig = {}) {
+function h5Config(pxToRemconfig = {}, preset = "wind3") {
+  const presets2 = [
+    /**
+     * 开启属性模式
+     * @see https://unocss.dev/presets/attributify
+     * @example <div text="sm white" font="mono light"></div>
+     */
+    presetAttributify(),
+    /**
+     * 开启自定义图标模式
+     * @see https://unocss.dev/presets/icons
+     * @example <div i-<collection>-<icon></div>
+     */
+    presetIcons({
+      prefix: "i-"
+    }),
+    pxToRemPreset(pxToRemconfig)
+  ];
+  if (preset === "wind4") {
+    presets2.push(presetWind4());
+  } else if (preset === "mini") {
+    presets2.push(presetMini());
+  } else {
+    presets2.push(presetWind3());
+  }
   return defineConfig({
     shortcuts: shortcuts_default,
-    presets: [
-      /**
-       * 默认预设
-       * @see https://unocss.dev/presets/uno
-       */
-      presetWind3(),
-      /**
-       * 开启属性模式
-       * @see https://unocss.dev/presets/attributify
-       * @example <div text="sm white" font="mono light"></div>
-       */
-      presetAttributify(),
-      /**
-       * 开启自定义图标模式
-       * @see https://unocss.dev/presets/icons
-       * @example <div i-<collection>-<icon></div>
-       */
-      presetIcons({
-        prefix: "i-"
-      }),
-      pxToRemPreset(pxToRemconfig)
-    ],
+    presets: presets2,
     transformers: [
       /**
        * 开启jsx文件的属性模式
@@ -126,7 +135,7 @@ function h5Config(pxToRemconfig = {}) {
        */
       transformerCompileClass()
     ],
-    safelist: "svg-text1 svg-text2".split(" "),
+    safelist: [],
     rules: [],
     theme: {
       breakpoints: breakpoints_default
@@ -136,12 +145,12 @@ function h5Config(pxToRemconfig = {}) {
 
 // src/uno.uniapp.config.ts
 import process from "process";
-import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetWind3 as presetWind32, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
+import { defineConfig as defineConfig2, presetAttributify as presetAttributify2, presetIcons as presetIcons2, presetMini as presetMini2, presetWind3 as presetWind32, presetWind4 as presetWind42, transformerCompileClass as transformerCompileClass2, transformerDirectives as transformerDirectives2, transformerVariantGroup as transformerVariantGroup2 } from "unocss";
 import { presetApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
-function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
+function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3") {
   const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : false;
   const attrConfig = typeof wxAttrConfig === "boolean" ? {} : wxAttrConfig;
   if (isApplet) {
@@ -149,7 +158,13 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
     if (!disableAttr)
       transformers.push(transformerAttributify(attrConfig));
   } else {
-    presets.push(presetWind32());
+    if (preset === "wind4") {
+      presets.push(presetWind42());
+    } else if (preset === "mini") {
+      presets.push(presetMini2());
+    } else {
+      presets.push(presetWind32());
+    }
     if (!disableAttr)
       presets.push(presetAttributify2());
   }
@@ -196,31 +211,34 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true) {
 }
 
 // src/uno.web.config.ts
-import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetWind3 as presetWind33, transformerAttributifyJsx as transformerAttributifyJsx2, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
-function webConfig() {
+import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetMini as presetMini3, presetWind3 as presetWind33, presetWind4 as presetWind43, transformerAttributifyJsx as transformerAttributifyJsx2, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
+function webConfig(preset = "wind3") {
+  const presets2 = [
+    /**
+     * 开启属性模式
+     * @see https://unocss.dev/presets/attributify
+     * @example <div text="sm white" font="mono light"></div>
+     */
+    presetAttributify3(),
+    /**
+     * 开启自定义图标模式
+     * @see https://unocss.dev/presets/icons
+     * @example <div i-<collection>-<icon></div>
+     */
+    presetIcons3({
+      prefix: "i-"
+    })
+  ];
+  if (preset === "wind4") {
+    presets2.push(presetWind43());
+  } else if (preset === "mini") {
+    presets2.push(presetMini3());
+  } else {
+    presets2.push(presetWind33());
+  }
   return defineConfig3({
     shortcuts: shortcuts_default,
-    presets: [
-      /**
-       * 默认预设
-       * @see https://unocss.dev/presets/uno
-       */
-      presetWind33(),
-      /**
-       * 开启属性模式
-       * @see https://unocss.dev/presets/attributify
-       * @example <div text="sm white" font="mono light"></div>
-       */
-      presetAttributify3(),
-      /**
-       * 开启自定义图标模式
-       * @see https://unocss.dev/presets/icons
-       * @example <div i-<collection>-<icon></div>
-       */
-      presetIcons3({
-        prefix: "i-"
-      })
-    ],
+    presets: presets2,
     transformers: [
       /**
        * 启用 --uno: 功能
@@ -251,7 +269,7 @@ function webConfig() {
        */
       transformerAttributifyJsx2()
     ],
-    safelist: "svg-text1 svg-text2".split(" "),
+    safelist: ["svg-text1", "svg-text2"],
     rules: [],
     theme: {
       breakpoints: breakpoints_default
@@ -261,32 +279,35 @@ function webConfig() {
 var adminConfig = webConfig;
 
 // src/uno.web.rem.config.ts
-import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetWind3 as presetWind34, transformerAttributifyJsx as transformerAttributifyJsx3, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
-function webRemConfig(pxToRemconfig = {}) {
+import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetMini as presetMini4, presetWind3 as presetWind34, presetWind4 as presetWind44, transformerAttributifyJsx as transformerAttributifyJsx3, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
+function webRemConfig(pxToRemconfig = {}, preset = "wind3") {
+  const presets2 = [
+    /**
+     * 开启属性模式
+     * @see https://unocss.dev/presets/attributify
+     * @example <div text="sm white" font="mono light"></div>
+     */
+    presetAttributify4(),
+    /**
+     * 开启自定义图标模式
+     * @see https://unocss.dev/presets/icons
+     * @example <div i-<collection>-<icon></div>
+     */
+    presetIcons4({
+      prefix: "i-"
+    }),
+    pxToRemPreset(pxToRemconfig)
+  ];
+  if (preset === "wind4") {
+    presets2.push(presetWind44());
+  } else if (preset === "mini") {
+    presets2.push(presetMini4());
+  } else {
+    presets2.push(presetWind34());
+  }
   return defineConfig4({
     shortcuts: shortcuts_default,
-    presets: [
-      /**
-       * 默认预设
-       * @see https://unocss.dev/presets/uno
-       */
-      presetWind34(),
-      /**
-       * 开启属性模式
-       * @see https://unocss.dev/presets/attributify
-       * @example <div text="sm white" font="mono light"></div>
-       */
-      presetAttributify4(),
-      /**
-       * 开启自定义图标模式
-       * @see https://unocss.dev/presets/icons
-       * @example <div i-<collection>-<icon></div>
-       */
-      presetIcons4({
-        prefix: "i-"
-      }),
-      pxToRemPreset(pxToRemconfig)
-    ],
+    presets: presets2,
     transformers: [
       /**
        * 启用 --uno: 功能
@@ -317,7 +338,7 @@ function webRemConfig(pxToRemconfig = {}) {
        */
       transformerAttributifyJsx3()
     ],
-    safelist: "svg-text1 svg-text2".split(" "),
+    safelist: [],
     rules: [],
     theme: {
       breakpoints: breakpoints_default

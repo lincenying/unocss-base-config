@@ -1,34 +1,48 @@
 import type { PxToRemConfigType } from './types'
-import { defineConfig, presetAttributify, presetIcons, presetWind3, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 import { pxToRemPreset } from './units'
 
-export function h5Config(pxToRemconfig: PxToRemConfigType = {}) {
+/**
+ * 配置H5环境下的UnoCSS
+ * @param pxToRemconfig px转rem/rpx配置选项
+ * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
+ * @returns UnoCSS配置对象
+ */
+export function h5Config(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' | 'wind4' | 'mini' | false = 'wind3') {
+    const presets = [
+        /**
+         * 开启属性模式
+         * @see https://unocss.dev/presets/attributify
+         * @example <div text="sm white" font="mono light"></div>
+         */
+        presetAttributify(),
+        /**
+         * 开启自定义图标模式
+         * @see https://unocss.dev/presets/icons
+         * @example <div i-<collection>-<icon></div>
+         */
+        presetIcons({
+            prefix: 'i-',
+        }),
+        pxToRemPreset(pxToRemconfig),
+    ]
+
+    // 根据传入的preset参数决定使用哪个预设
+    if (preset === 'wind4') {
+        presets.push(presetWind4())
+    }
+    else if (preset === 'mini') {
+        presets.push(presetMini())
+    }
+    else if (preset === 'wind3') {
+        presets.push(presetWind3())
+    }
+
     return defineConfig({
         shortcuts,
-        presets: [
-            /**
-             * 默认预设
-             * @see https://unocss.dev/presets/uno
-             */
-            presetWind3(),
-            /**
-             * 开启属性模式
-             * @see https://unocss.dev/presets/attributify
-             * @example <div text="sm white" font="mono light"></div>
-             */
-            presetAttributify(),
-            /**
-             * 开启自定义图标模式
-             * @see https://unocss.dev/presets/icons
-             * @example <div i-<collection>-<icon></div>
-             */
-            presetIcons({
-                prefix: 'i-',
-            }),
-            pxToRemPreset(pxToRemconfig),
-        ],
+        presets,
         transformers: [
             /**
              * 开启jsx文件的属性模式
