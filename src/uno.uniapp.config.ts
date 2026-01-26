@@ -31,10 +31,10 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
          * UnoCSS Applet
          * @see https://github.com/unocss-applet/unocss-applet
          */
-        presets.push(presetApplet())
+        presets.push(presetApplet() as Preset)
         // presets.push(presetRemRpx()) // 如果需要使用 rem 转 rpx 单位，需要启用此插件
         if (!disableAttr)
-            transformers.push(transformerAttributify(attrConfig))
+            transformers.push(transformerAttributify(attrConfig) as unknown as SourceCodeTransformer)
     }
     else {
         /**
