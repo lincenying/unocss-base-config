@@ -34,10 +34,14 @@ export function h5Config(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' 
         presets.push(presetWind4())
     }
     else if (preset === 'mini') {
-        presets.push(presetMini())
+        presets.push(presetMini({
+            preflight: 'on-demand',
+        }))
     }
     else if (preset === 'wind3') {
-        presets.push(presetWind3())
+        presets.push(presetWind3({
+            preflight: 'on-demand',
+        }))
     }
 
     return defineConfig({

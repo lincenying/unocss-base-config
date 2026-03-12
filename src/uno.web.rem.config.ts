@@ -1,4 +1,5 @@
 import type { PxToRemConfigType } from './types'
+import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
@@ -31,16 +32,24 @@ export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}, preset: 'win
             prefix: 'i-',
         }),
         pxToRemPreset(pxToRemconfig),
+        presetLegacyCompat({
+            commaStyleColorFunction: true,
+            legacyColorSpace: true,
+        }),
     ]
 
     if (preset === 'wind4') {
         presets.push(presetWind4())
     }
     else if (preset === 'mini') {
-        presets.push(presetMini())
+        presets.push(presetMini({
+            preflight: 'on-demand',
+        }))
     }
     else if (preset === 'wind3') {
-        presets.push(presetWind3())
+        presets.push(presetWind3({
+            preflight: 'on-demand',
+        }))
     }
 
     return defineConfig({

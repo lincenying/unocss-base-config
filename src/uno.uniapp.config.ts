@@ -45,10 +45,14 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
             presets.push(presetWind4())
         }
         else if (preset === 'mini') {
-            presets.push(presetMini())
+            presets.push(presetMini({
+                preflight: 'on-demand',
+            }))
         }
         else if (preset === 'wind3') {
-            presets.push(presetWind3())
+            presets.push(presetWind3({
+                preflight: 'on-demand',
+            }))
         }
         /**
          * 开启属性模式

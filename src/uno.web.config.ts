@@ -29,10 +29,14 @@ export function webConfig(preset: 'wind3' | 'wind4' | 'mini' | false = 'wind3') 
         presets.push(presetWind4())
     }
     else if (preset === 'mini') {
-        presets.push(presetMini())
+        presets.push(presetMini({
+            preflight: 'on-demand',
+        }))
     }
     else if (preset === 'wind3') {
-        presets.push(presetWind3())
+        presets.push(presetWind3({
+            preflight: 'on-demand',
+        }))
     }
 
     return defineConfig({
