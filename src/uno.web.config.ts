@@ -13,6 +13,7 @@ export function webConfig(preset?: 'mini', presetConfig?: PresetMiniOptions): Us
 /**
  * 创建Web环境下的UnoCSS配置
  * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
+ * @param presetConfig 预设配置
  * @returns 返回UnoCSS的配置对象
  */
 export function webConfig(preset: 'wind3' | 'wind4' | 'mini' | false = 'wind3', presetConfig: any = {}) {

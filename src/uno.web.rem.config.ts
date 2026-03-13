@@ -19,6 +19,7 @@ export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'mini',
  * @param pxToRemconfig.noneUnti2Rem - 是否将无单位属性还原成rem单位
  * @param pxToRemconfig.unti - 转换的目标单位
  * @param preset - 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
+ * @param presetConfig - 预设配置选项
  * @returns UnoCSS的配置对象
  */
 export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' | 'wind4' | 'mini' = 'wind3', presetConfig: any = {}) {

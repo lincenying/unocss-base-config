@@ -16,6 +16,7 @@ export function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', pre
  * 配置H5环境下的UnoCSS
  * @param pxToRemconfig px转rem/rpx配置选项
  * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
+ * @param presetConfig 预设配置选项
  * @returns UnoCSS配置对象
  */
 export function h5Config(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' | 'wind4' | 'mini' | false = 'wind3', presetConfig: any = {}) {

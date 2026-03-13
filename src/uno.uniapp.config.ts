@@ -26,6 +26,7 @@ export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: b
  * @param pxToRemConfig px转rem的配置选项
  * @param wxAttrConfig 是否启用属性化模式或配置选项
  * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
+ * @param presetConfig 预设配置选项
  * @returns 返回 UnoCSS 的配置对象
  */
 export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig: boolean | TransformerAttributifyOptions = true, preset: 'wind3' | 'wind4' | 'mini' = 'wind3', presetConfig: any = {}) {
