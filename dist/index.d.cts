@@ -1,4 +1,6 @@
-import * as unocss from 'unocss';
+import { PresetMiniOptions } from 'unocss/preset-mini';
+import { PresetWind3Options } from 'unocss/preset-wind3';
+import { PresetWind4Options } from 'unocss/preset-wind4';
 import { TransformerAttributifyOptions } from 'unocss-applet';
 
 interface PxToRemConfigType {
@@ -9,41 +11,22 @@ interface PxToRemConfigType {
     unti?: 'rem' | 'rpx';
 }
 
-/**
- * 配置H5环境下的UnoCSS
- * @param pxToRemconfig px转rem/rpx配置选项
- * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
- * @returns UnoCSS配置对象
- */
-declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3' | 'wind4' | 'mini' | false): unocss.UserConfig<object>;
+declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): void;
+declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): void;
+declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): void;
 
-/**
- * 配置 UnoCSS 用于 UniApp 项目的函数
- * @param pxToRemConfig px转rem的配置选项
- * @param wxAttrConfig 是否启用属性化模式或配置选项
- * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
- * @returns 返回 UnoCSS 的配置对象
- */
-declare function uniappConfig(pxToRemConfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind3' | 'wind4' | 'mini'): unocss.UserConfig<object>;
+declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind3', presetConfig?: PresetWind3Options): void;
+declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind4', presetConfig?: PresetWind4Options): void;
+declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'mini', presetConfig?: PresetMiniOptions): void;
 
-/**
- * 创建Web环境下的UnoCSS配置
- * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
- * @returns 返回UnoCSS的配置对象
- */
-declare function webConfig(preset?: 'wind3' | 'wind4' | 'mini' | false): unocss.UserConfig<object>;
+declare function webConfig(preset?: 'wind3', presetConfig?: PresetWind3Options): void;
+declare function webConfig(preset?: 'wind4', presetConfig?: PresetWind4Options): void;
+declare function webConfig(preset?: 'mini', presetConfig?: PresetMiniOptions): void;
 declare const adminConfig: typeof webConfig;
 
-/**
- * 创建适用于Web端的UnoCSS配置（使用rem单位）
- * @param pxToRemconfig - px转rem的配置选项
- * @param pxToRemconfig.baseFontSize - 基准字体大小，默认为100
- * @param pxToRemconfig.noneUnti2Rem - 是否将无单位属性还原成rem单位
- * @param pxToRemconfig.unti - 转换的目标单位
- * @param preset - 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
- * @returns UnoCSS的配置对象
- */
-declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3' | 'wind4' | 'mini'): unocss.UserConfig<object>;
+declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): void;
+declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): void;
+declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): void;
 declare const datavConfig: typeof webRemConfig;
 
 export { adminConfig, datavConfig, h5Config, uniappConfig, webConfig, webRemConfig };

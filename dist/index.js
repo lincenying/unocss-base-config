@@ -82,7 +82,7 @@ function pxToRemPreset(options = {}) {
 }
 
 // src/uno.h5.config.ts
-function h5Config(pxToRemconfig = {}, preset = "wind3") {
+function h5Config(pxToRemconfig = {}, preset = "wind3", presetConfig = {}) {
   const presets2 = [
     /**
      * 开启属性模式
@@ -101,11 +101,11 @@ function h5Config(pxToRemconfig = {}, preset = "wind3") {
     pxToRemPreset(pxToRemconfig)
   ];
   if (preset === "wind4") {
-    presets2.push(presetWind4());
+    presets2.push(presetWind4(presetConfig));
   } else if (preset === "mini") {
-    presets2.push(presetMini());
+    presets2.push(presetMini(presetConfig));
   } else if (preset === "wind3") {
-    presets2.push(presetWind3());
+    presets2.push(presetWind3(presetConfig));
   }
   return defineConfig({
     shortcuts: shortcuts_default,
@@ -150,7 +150,7 @@ import { presetApplet, transformerAttributify } from "unocss-applet";
 var isApplet = process.env?.UNI_PLATFORM?.startsWith("mp-") ?? false;
 var presets = [];
 var transformers = [];
-function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3") {
+function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3", presetConfig = {}) {
   const disableAttr = typeof wxAttrConfig === "boolean" ? wxAttrConfig : false;
   const attrConfig = typeof wxAttrConfig === "boolean" ? {} : wxAttrConfig;
   if (isApplet) {
@@ -159,11 +159,11 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3")
       transformers.push(transformerAttributify(attrConfig));
   } else {
     if (preset === "wind4") {
-      presets.push(presetWind42());
+      presets.push(presetWind42(presetConfig));
     } else if (preset === "mini") {
-      presets.push(presetMini2());
+      presets.push(presetMini2(presetConfig));
     } else if (preset === "wind3") {
-      presets.push(presetWind32());
+      presets.push(presetWind32(presetConfig));
     }
     if (!disableAttr)
       presets.push(presetAttributify2());
@@ -212,7 +212,7 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3")
 
 // src/uno.web.config.ts
 import { defineConfig as defineConfig3, presetAttributify as presetAttributify3, presetIcons as presetIcons3, presetMini as presetMini3, presetWind3 as presetWind33, presetWind4 as presetWind43, transformerAttributifyJsx as transformerAttributifyJsx2, transformerCompileClass as transformerCompileClass3, transformerDirectives as transformerDirectives3, transformerVariantGroup as transformerVariantGroup3 } from "unocss";
-function webConfig(preset = "wind3") {
+function webConfig(preset = "wind3", presetConfig = {}) {
   const presets2 = [
     /**
      * 开启属性模式
@@ -230,11 +230,11 @@ function webConfig(preset = "wind3") {
     })
   ];
   if (preset === "wind4") {
-    presets2.push(presetWind43());
+    presets2.push(presetWind43(presetConfig));
   } else if (preset === "mini") {
-    presets2.push(presetMini3());
+    presets2.push(presetMini3(presetConfig));
   } else if (preset === "wind3") {
-    presets2.push(presetWind33());
+    presets2.push(presetWind33(presetConfig));
   }
   return defineConfig3({
     shortcuts: shortcuts_default,
@@ -278,9 +278,51 @@ function webConfig(preset = "wind3") {
 }
 var adminConfig = webConfig;
 
+// node_modules/.pnpm/@unocss+core@66.6.6/node_modules/@unocss/core/dist/index.mjs
+var LAYER_DEFAULT = "default";
+var LAYER_PREFLIGHTS = "preflights";
+var LAYER_SHORTCUTS = "shortcuts";
+var LAYER_IMPORTS = "imports";
+var DEFAULT_LAYERS = {
+  [LAYER_IMPORTS]: -200,
+  [LAYER_PREFLIGHTS]: -100,
+  [LAYER_SHORTCUTS]: -10,
+  [LAYER_DEFAULT]: 0
+};
+function definePreset(preset) {
+  return preset;
+}
+
+// node_modules/.pnpm/@unocss+preset-legacy-compat@66.6.6/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
+function toCommaStyleColorFunction(str) {
+  return str.replace(/((?:rgb|hsl)a?)\(([^)]+)\)/g, (_, fn, v) => {
+    const [rgb, alpha] = v.split(/\//g).map((i) => i.trim());
+    if (alpha && !fn.endsWith("a")) fn += "a";
+    const parts = rgb.split(/,?\s+/).map((i) => i.trim());
+    if (alpha) parts.push(alpha);
+    return `${fn}(${parts.filter(Boolean).join(", ")})`;
+  });
+}
+var presetLegacyCompat = definePreset((options = {}) => {
+  const { commaStyleColorFunction = false, legacyColorSpace = false } = options;
+  return {
+    name: "@unocss/preset-legacy-compat",
+    postprocess: (util) => {
+      util.entries.forEach((i) => {
+        let value = i[1];
+        if (typeof value !== "string") return;
+        if (commaStyleColorFunction) value = toCommaStyleColorFunction(value);
+        if (value !== i[1]) i[1] = value;
+        if (legacyColorSpace) i[1] = i[1].replace(/\s*in (oklch|oklab)/g, "");
+      });
+    }
+  };
+});
+var src_default = presetLegacyCompat;
+
 // src/uno.web.rem.config.ts
 import { defineConfig as defineConfig4, presetAttributify as presetAttributify4, presetIcons as presetIcons4, presetMini as presetMini4, presetWind3 as presetWind34, presetWind4 as presetWind44, transformerAttributifyJsx as transformerAttributifyJsx3, transformerCompileClass as transformerCompileClass4, transformerDirectives as transformerDirectives4, transformerVariantGroup as transformerVariantGroup4 } from "unocss";
-function webRemConfig(pxToRemconfig = {}, preset = "wind3") {
+function webRemConfig(pxToRemconfig = {}, preset = "wind3", presetConfig = {}) {
   const presets2 = [
     /**
      * 开启属性模式
@@ -296,14 +338,18 @@ function webRemConfig(pxToRemconfig = {}, preset = "wind3") {
     presetIcons4({
       prefix: "i-"
     }),
-    pxToRemPreset(pxToRemconfig)
+    pxToRemPreset(pxToRemconfig),
+    src_default({
+      commaStyleColorFunction: true,
+      legacyColorSpace: true
+    })
   ];
   if (preset === "wind4") {
-    presets2.push(presetWind44());
+    presets2.push(presetWind44(presetConfig));
   } else if (preset === "mini") {
-    presets2.push(presetMini4());
+    presets2.push(presetMini4(presetConfig));
   } else if (preset === "wind3") {
-    presets2.push(presetWind34());
+    presets2.push(presetWind34(presetConfig));
   }
   return defineConfig4({
     shortcuts: shortcuts_default,

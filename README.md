@@ -1,4 +1,4 @@
-# @lincy/unocss-base-config
+### @lincy/unocss-base-config
 
 Usage
 
