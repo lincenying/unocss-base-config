@@ -1,5 +1,8 @@
 import type { Preset, SourceCodeTransformer } from 'unocss'
 import type { TransformerAttributifyOptions } from 'unocss-applet'
+import type { PresetMiniOptions } from 'unocss/preset-mini'
+import type { PresetWind3Options } from 'unocss/preset-wind3'
+import type { PresetWind4Options } from 'unocss/preset-wind4'
 
 import type { PxToRemConfigType } from './types'
 import process from 'node:process'
@@ -14,6 +17,9 @@ const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
 const presets: Preset[] = []
 const transformers: SourceCodeTransformer[] = []
 
+export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind3', presetConfig?: PresetWind3Options): void
+export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind4', presetConfig?: PresetWind4Options): void
+export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'mini', presetConfig?: PresetMiniOptions): void
 /**
  * 配置 UnoCSS 用于 UniApp 项目的函数
  * @param pxToRemConfig px转rem的配置选项
@@ -21,7 +27,7 @@ const transformers: SourceCodeTransformer[] = []
  * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
  * @returns 返回 UnoCSS 的配置对象
  */
-export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig: boolean | TransformerAttributifyOptions = true, preset: 'wind3' | 'wind4' | 'mini' = 'wind3') {
+export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig: boolean | TransformerAttributifyOptions = true, preset: 'wind3' | 'wind4' | 'mini' = 'wind3', presetConfig: any = {}) {
     const disableAttr = typeof wxAttrConfig === 'boolean' ? wxAttrConfig : false
     const attrConfig = typeof wxAttrConfig === 'boolean' ? { } : wxAttrConfig
 
@@ -42,17 +48,13 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
          * @see https://unocss.dev/presets/uno
          */
         if (preset === 'wind4') {
-            presets.push(presetWind4())
+            presets.push(presetWind4(presetConfig))
         }
         else if (preset === 'mini') {
-            presets.push(presetMini({
-                preflight: 'on-demand',
-            }))
+            presets.push(presetMini(presetConfig))
         }
         else if (preset === 'wind3') {
-            presets.push(presetWind3({
-                preflight: 'on-demand',
-            }))
+            presets.push(presetWind3(presetConfig))
         }
         /**
          * 开启属性模式

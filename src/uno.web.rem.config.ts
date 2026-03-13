@@ -1,3 +1,6 @@
+import type { PresetMiniOptions } from 'unocss/preset-mini'
+import type { PresetWind3Options } from 'unocss/preset-wind3'
+import type { PresetWind4Options } from 'unocss/preset-wind4'
 import type { PxToRemConfigType } from './types'
 import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
@@ -5,6 +8,9 @@ import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 import { pxToRemPreset } from './units'
 
+export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): void
+export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): void
+export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): void
 /**
  * 创建适用于Web端的UnoCSS配置（使用rem单位）
  * @param pxToRemconfig - px转rem的配置选项
@@ -14,7 +20,7 @@ import { pxToRemPreset } from './units'
  * @param preset - 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'
  * @returns UnoCSS的配置对象
  */
-export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' | 'wind4' | 'mini' = 'wind3') {
+export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' | 'wind4' | 'mini' = 'wind3', presetConfig: any = {}) {
     const presets = [
 
         /**
@@ -39,17 +45,13 @@ export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}, preset: 'win
     ]
 
     if (preset === 'wind4') {
-        presets.push(presetWind4())
+        presets.push(presetWind4(presetConfig))
     }
     else if (preset === 'mini') {
-        presets.push(presetMini({
-            preflight: 'on-demand',
-        }))
+        presets.push(presetMini(presetConfig))
     }
     else if (preset === 'wind3') {
-        presets.push(presetWind3({
-            preflight: 'on-demand',
-        }))
+        presets.push(presetWind3(presetConfig))
     }
 
     return defineConfig({
