@@ -3,6 +3,7 @@ import type { PresetMiniOptions, Theme as ThemeMini } from 'unocss/preset-mini'
 import type { PresetWind3Options } from 'unocss/preset-wind3'
 import type { PresetWind4Options, Theme as ThemeWind4 } from 'unocss/preset-wind4'
 import type { PxToRemConfigType } from './types'
+import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
@@ -34,6 +35,10 @@ export function h5Config(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' 
             prefix: 'i-',
         }),
         pxToRemPreset(pxToRemconfig),
+        presetLegacyCompat({
+            commaStyleColorFunction: true,
+            legacyColorSpace: true,
+        }),
     ]
 
     // 根据传入的preset参数决定使用哪个预设

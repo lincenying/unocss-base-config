@@ -2,6 +2,7 @@ import type { UserConfig } from 'unocss'
 import type { PresetMiniOptions, Theme as ThemeMini } from 'unocss/preset-mini'
 import type { PresetWind3Options } from 'unocss/preset-wind3'
 import type { PresetWind4Options, Theme as ThemeWind4 } from 'unocss/preset-wind4'
+import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
@@ -29,6 +30,10 @@ export function webConfig(preset: 'wind3' | 'wind4' | 'mini' | false = 'wind3', 
          */
         presetIcons({
             prefix: 'i-',
+        }),
+        presetLegacyCompat({
+            commaStyleColorFunction: true,
+            legacyColorSpace: true,
         }),
     ]
     // 根据传入的预设类型添加对应的预设

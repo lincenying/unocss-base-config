@@ -3,9 +3,10 @@ import type { TransformerAttributifyOptions } from 'unocss-applet'
 import type { PresetMiniOptions, Theme as ThemeMini } from 'unocss/preset-mini'
 import type { PresetWind3Options } from 'unocss/preset-wind3'
 import type { PresetWind4Options, Theme as ThemeWind4 } from 'unocss/preset-wind4'
-
 import type { PxToRemConfigType } from './types'
+
 import process from 'node:process'
+import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetApplet, transformerAttributify } from 'unocss-applet'
 import breakpoints from './breakpoints'
@@ -71,6 +72,10 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
             presetIcons({
                 scale: 1.0,
                 warn: true,
+            }),
+            presetLegacyCompat({
+                commaStyleColorFunction: true,
+                legacyColorSpace: true,
             }),
             ...presets,
             ...[pxToRemPreset(pxToRemConfig)],
