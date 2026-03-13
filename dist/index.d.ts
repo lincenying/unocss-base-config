@@ -1,6 +1,7 @@
-import { PresetMiniOptions } from 'unocss/preset-mini';
+import { UserConfig } from 'unocss';
+import { Theme, PresetMiniOptions } from 'unocss/preset-mini';
 import { PresetWind3Options } from 'unocss/preset-wind3';
-import { PresetWind4Options } from 'unocss/preset-wind4';
+import { PresetWind4Options, Theme as Theme$1 } from 'unocss/preset-wind4';
 import { TransformerAttributifyOptions } from 'unocss-applet';
 
 interface PxToRemConfigType {
@@ -11,22 +12,22 @@ interface PxToRemConfigType {
     unti?: 'rem' | 'rpx';
 }
 
-declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): void;
-declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): void;
-declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): void;
+declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): UserConfig<Theme>;
+declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): UserConfig<Theme$1>;
+declare function h5Config(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): UserConfig<Theme>;
 
-declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind3', presetConfig?: PresetWind3Options): void;
-declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind4', presetConfig?: PresetWind4Options): void;
-declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'mini', presetConfig?: PresetMiniOptions): void;
+declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind3', presetConfig?: PresetWind3Options): UserConfig<Theme>;
+declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind4', presetConfig?: PresetWind4Options): UserConfig<Theme$1>;
+declare function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'mini', presetConfig?: PresetMiniOptions): UserConfig<Theme>;
 
-declare function webConfig(preset?: 'wind3', presetConfig?: PresetWind3Options): void;
-declare function webConfig(preset?: 'wind4', presetConfig?: PresetWind4Options): void;
-declare function webConfig(preset?: 'mini', presetConfig?: PresetMiniOptions): void;
+declare function webConfig(preset?: 'wind3', presetConfig?: PresetWind3Options): UserConfig<Theme>;
+declare function webConfig(preset?: 'wind4', presetConfig?: PresetWind4Options): UserConfig<Theme$1>;
+declare function webConfig(preset?: 'mini', presetConfig?: PresetMiniOptions): UserConfig<Theme>;
 declare const adminConfig: typeof webConfig;
 
-declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): void;
-declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): void;
-declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): void;
+declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): UserConfig<Theme>;
+declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): UserConfig<Theme$1>;
+declare function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): UserConfig<Theme>;
 declare const datavConfig: typeof webRemConfig;
 
 export { adminConfig, datavConfig, h5Config, uniappConfig, webConfig, webRemConfig };

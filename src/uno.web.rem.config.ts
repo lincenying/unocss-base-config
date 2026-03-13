@@ -1,6 +1,7 @@
-import type { PresetMiniOptions } from 'unocss/preset-mini'
+import type { UserConfig } from 'unocss'
+import type { PresetMiniOptions, Theme as ThemeMini } from 'unocss/preset-mini'
 import type { PresetWind3Options } from 'unocss/preset-wind3'
-import type { PresetWind4Options } from 'unocss/preset-wind4'
+import type { PresetWind4Options, Theme as ThemeWind4 } from 'unocss/preset-wind4'
 import type { PxToRemConfigType } from './types'
 import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
@@ -8,9 +9,9 @@ import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 import { pxToRemPreset } from './units'
 
-export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): void
-export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): void
-export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): void
+export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind3', presetConfig?: PresetWind3Options): UserConfig<ThemeMini>
+export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'wind4', presetConfig?: PresetWind4Options): UserConfig<ThemeWind4>
+export function webRemConfig(pxToRemconfig?: PxToRemConfigType, preset?: 'mini', presetConfig?: PresetMiniOptions): UserConfig<ThemeMini>
 /**
  * 创建适用于Web端的UnoCSS配置（使用rem单位）
  * @param pxToRemconfig - px转rem的配置选项

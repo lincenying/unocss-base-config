@@ -1,13 +1,14 @@
-import type { PresetMiniOptions } from 'unocss/preset-mini'
+import type { UserConfig } from 'unocss'
+import type { PresetMiniOptions, Theme as ThemeMini } from 'unocss/preset-mini'
 import type { PresetWind3Options } from 'unocss/preset-wind3'
-import type { PresetWind4Options } from 'unocss/preset-wind4'
+import type { PresetWind4Options, Theme as ThemeWind4 } from 'unocss/preset-wind4'
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 import breakpoints from './breakpoints'
 import shortcuts from './shortcuts'
 
-export function webConfig(preset?: 'wind3', presetConfig?: PresetWind3Options): void
-export function webConfig(preset?: 'wind4', presetConfig?: PresetWind4Options): void
-export function webConfig(preset?: 'mini', presetConfig?: PresetMiniOptions): void
+export function webConfig(preset?: 'wind3', presetConfig?: PresetWind3Options): UserConfig<ThemeMini>
+export function webConfig(preset?: 'wind4', presetConfig?: PresetWind4Options): UserConfig<ThemeWind4>
+export function webConfig(preset?: 'mini', presetConfig?: PresetMiniOptions): UserConfig<ThemeMini>
 /**
  * 创建Web环境下的UnoCSS配置
  * @param preset 使用的预设类型，可选'wind3'、'wind4'、'mini'、false，默认为'wind3'

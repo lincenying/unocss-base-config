@@ -1,8 +1,8 @@
-import type { Preset, SourceCodeTransformer } from 'unocss'
+import type { Preset, SourceCodeTransformer, UserConfig } from 'unocss'
 import type { TransformerAttributifyOptions } from 'unocss-applet'
-import type { PresetMiniOptions } from 'unocss/preset-mini'
+import type { PresetMiniOptions, Theme as ThemeMini } from 'unocss/preset-mini'
 import type { PresetWind3Options } from 'unocss/preset-wind3'
-import type { PresetWind4Options } from 'unocss/preset-wind4'
+import type { PresetWind4Options, Theme as ThemeWind4 } from 'unocss/preset-wind4'
 
 import type { PxToRemConfigType } from './types'
 import process from 'node:process'
@@ -17,9 +17,9 @@ const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
 const presets: Preset[] = []
 const transformers: SourceCodeTransformer[] = []
 
-export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind3', presetConfig?: PresetWind3Options): void
-export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind4', presetConfig?: PresetWind4Options): void
-export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'mini', presetConfig?: PresetMiniOptions): void
+export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind3', presetConfig?: PresetWind3Options): UserConfig<ThemeMini>
+export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'wind4', presetConfig?: PresetWind4Options): UserConfig<ThemeWind4>
+export function uniappConfig(pxToRemconfig?: PxToRemConfigType, wxAttrConfig?: boolean | TransformerAttributifyOptions, preset?: 'mini', presetConfig?: PresetMiniOptions): UserConfig<ThemeMini>
 /**
  * 配置 UnoCSS 用于 UniApp 项目的函数
  * @param pxToRemConfig px转rem的配置选项
