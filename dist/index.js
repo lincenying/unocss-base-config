@@ -1,4 +1,4 @@
-// node_modules/.pnpm/@unocss+core@66.6.6/node_modules/@unocss/core/dist/index.mjs
+// node_modules/.pnpm/@unocss+core@66.6.8/node_modules/@unocss/core/dist/index.mjs
 var LAYER_DEFAULT = "default";
 var LAYER_PREFLIGHTS = "preflights";
 var LAYER_SHORTCUTS = "shortcuts";
@@ -13,7 +13,7 @@ function definePreset(preset) {
   return preset;
 }
 
-// node_modules/.pnpm/@unocss+preset-legacy-compat@66.6.6/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
+// node_modules/.pnpm/@unocss+preset-legacy-compat@66.6.8/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
 function toCommaStyleColorFunction(str) {
   return str.replace(/((?:rgb|hsl)a?)\(([^)]+)\)/g, (_, fn, v) => {
     const [rgb, alpha] = v.split(/\//g).map((i) => i.trim());
@@ -38,7 +38,6 @@ var presetLegacyCompat = definePreset((options = {}) => {
     }
   };
 });
-var src_default = presetLegacyCompat;
 
 // src/uno.h5.config.ts
 import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
@@ -140,11 +139,7 @@ function h5Config(pxToRemconfig = {}, preset = "wind3", presetConfig = {}) {
     presetIcons({
       prefix: "i-"
     }),
-    pxToRemPreset(pxToRemconfig),
-    src_default({
-      commaStyleColorFunction: true,
-      legacyColorSpace: true
-    })
+    pxToRemPreset(pxToRemconfig)
   ];
   if (preset === "wind4") {
     presets2.push(presetWind4(presetConfig));
@@ -152,6 +147,12 @@ function h5Config(pxToRemconfig = {}, preset = "wind3", presetConfig = {}) {
     presets2.push(presetMini(presetConfig));
   } else if (preset === "wind3") {
     presets2.push(presetWind3(presetConfig));
+  }
+  if (preset !== "wind4") {
+    presets2.push(presetLegacyCompat({
+      commaStyleColorFunction: true,
+      legacyColorSpace: true
+    }));
   }
   return defineConfig({
     shortcuts: shortcuts_default,
@@ -211,6 +212,12 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3",
     } else if (preset === "wind3") {
       presets.push(presetWind32(presetConfig));
     }
+    if (preset !== "wind4") {
+      presets.push(presetLegacyCompat({
+        commaStyleColorFunction: true,
+        legacyColorSpace: true
+      }));
+    }
     if (!disableAttr)
       presets.push(presetAttributify2());
   }
@@ -220,10 +227,6 @@ function uniappConfig(pxToRemConfig = {}, wxAttrConfig = true, preset = "wind3",
       presetIcons2({
         scale: 1,
         warn: true
-      }),
-      src_default({
-        commaStyleColorFunction: true,
-        legacyColorSpace: true
       }),
       ...presets,
       ...[pxToRemPreset(pxToRemConfig)]
@@ -277,10 +280,6 @@ function webConfig(preset = "wind3", presetConfig = {}) {
      */
     presetIcons3({
       prefix: "i-"
-    }),
-    src_default({
-      commaStyleColorFunction: true,
-      legacyColorSpace: true
     })
   ];
   if (preset === "wind4") {
@@ -289,6 +288,12 @@ function webConfig(preset = "wind3", presetConfig = {}) {
     presets2.push(presetMini3(presetConfig));
   } else if (preset === "wind3") {
     presets2.push(presetWind33(presetConfig));
+  }
+  if (preset !== "wind4") {
+    presets2.push(presetLegacyCompat({
+      commaStyleColorFunction: true,
+      legacyColorSpace: true
+    }));
   }
   return defineConfig3({
     shortcuts: shortcuts_default,
@@ -350,11 +355,7 @@ function webRemConfig(pxToRemconfig = {}, preset = "wind3", presetConfig = {}) {
     presetIcons4({
       prefix: "i-"
     }),
-    pxToRemPreset(pxToRemconfig),
-    src_default({
-      commaStyleColorFunction: true,
-      legacyColorSpace: true
-    })
+    pxToRemPreset(pxToRemconfig)
   ];
   if (preset === "wind4") {
     presets2.push(presetWind44(presetConfig));
@@ -362,6 +363,12 @@ function webRemConfig(pxToRemconfig = {}, preset = "wind3", presetConfig = {}) {
     presets2.push(presetMini4(presetConfig));
   } else if (preset === "wind3") {
     presets2.push(presetWind34(presetConfig));
+  }
+  if (preset !== "wind4") {
+    presets2.push(presetLegacyCompat({
+      commaStyleColorFunction: true,
+      legacyColorSpace: true
+    }));
   }
   return defineConfig4({
     shortcuts: shortcuts_default,
