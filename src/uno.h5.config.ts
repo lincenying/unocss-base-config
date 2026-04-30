@@ -36,10 +36,6 @@ export function h5Config(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' 
             prefix: 'i-',
         }),
         pxToRemPreset(pxToRemconfig),
-        presetLegacyCompat({
-            commaStyleColorFunction: true,
-            legacyColorSpace: true,
-        }),
     ]
 
     // 根据传入的preset参数决定使用哪个预设
@@ -51,6 +47,13 @@ export function h5Config(pxToRemconfig: PxToRemConfigType = {}, preset: 'wind3' 
     }
     else if (preset === 'wind3') {
         presets.push(presetWind3(presetConfig))
+    }
+
+    if (preset !== 'wind4') {
+        presets.push(presetLegacyCompat({
+            commaStyleColorFunction: true,
+            legacyColorSpace: true,
+        }))
     }
 
     return defineConfig({

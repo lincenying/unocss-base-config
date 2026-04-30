@@ -40,10 +40,6 @@ export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}, preset: 'win
             prefix: 'i-',
         }),
         pxToRemPreset(pxToRemconfig),
-        presetLegacyCompat({
-            commaStyleColorFunction: true,
-            legacyColorSpace: true,
-        }),
     ]
 
     if (preset === 'wind4') {
@@ -54,6 +50,13 @@ export function webRemConfig(pxToRemconfig: PxToRemConfigType = {}, preset: 'win
     }
     else if (preset === 'wind3') {
         presets.push(presetWind3(presetConfig))
+    }
+
+    if (preset !== 'wind4') {
+        presets.push(presetLegacyCompat({
+            commaStyleColorFunction: true,
+            legacyColorSpace: true,
+        }))
     }
 
     return defineConfig({

@@ -58,6 +58,14 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
         else if (preset === 'wind3') {
             presets.push(presetWind3(presetConfig))
         }
+
+        if (preset !== 'wind4') {
+            presets.push(presetLegacyCompat({
+                commaStyleColorFunction: true,
+                legacyColorSpace: true,
+            }))
+        }
+
         /**
          * 开启属性模式
          * @see https://unocss.dev/presets/attributify
@@ -73,10 +81,6 @@ export function uniappConfig(pxToRemConfig: PxToRemConfigType = {}, wxAttrConfig
             presetIcons({
                 scale: 1.0,
                 warn: true,
-            }),
-            presetLegacyCompat({
-                commaStyleColorFunction: true,
-                legacyColorSpace: true,
             }),
             ...presets,
             ...[pxToRemPreset(pxToRemConfig)],

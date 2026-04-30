@@ -32,10 +32,6 @@ export function webConfig(preset: 'wind3' | 'wind4' | 'mini' | false = 'wind3', 
         presetIcons({
             prefix: 'i-',
         }),
-        presetLegacyCompat({
-            commaStyleColorFunction: true,
-            legacyColorSpace: true,
-        }),
     ]
     // 根据传入的预设类型添加对应的预设
     if (preset === 'wind4') {
@@ -46,6 +42,13 @@ export function webConfig(preset: 'wind3' | 'wind4' | 'mini' | false = 'wind3', 
     }
     else if (preset === 'wind3') {
         presets.push(presetWind3(presetConfig))
+    }
+
+    if (preset !== 'wind4') {
+        presets.push(presetLegacyCompat({
+            commaStyleColorFunction: true,
+            legacyColorSpace: true,
+        }))
     }
 
     return defineConfig({
