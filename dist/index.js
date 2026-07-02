@@ -1,47 +1,3 @@
-// node_modules/.pnpm/@unocss+core@66.7.0/node_modules/@unocss/core/dist/index.mjs
-var LAYER_DEFAULT = "default";
-var LAYER_PREFLIGHTS = "preflights";
-var LAYER_SHORTCUTS = "shortcuts";
-var LAYER_IMPORTS = "imports";
-var DEFAULT_LAYERS = {
-  [LAYER_IMPORTS]: -200,
-  [LAYER_PREFLIGHTS]: -100,
-  [LAYER_SHORTCUTS]: -10,
-  [LAYER_DEFAULT]: 0
-};
-function definePreset(preset) {
-  return preset;
-}
-
-// node_modules/.pnpm/@unocss+preset-legacy-compat@66.7.0/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
-function toCommaStyleColorFunction(str) {
-  return str.replace(/((?:rgb|hsl)a?)\(([^)]+)\)/g, (_, fn, v) => {
-    const [rgb, alpha] = v.split(/\//g).map((i) => i.trim());
-    if (alpha && !fn.endsWith("a")) fn += "a";
-    const parts = rgb.split(/,?\s+/).map((i) => i.trim());
-    if (alpha) parts.push(alpha);
-    return `${fn}(${parts.filter(Boolean).join(", ")})`;
-  });
-}
-var presetLegacyCompat = definePreset((options = {}) => {
-  const { commaStyleColorFunction = false, legacyColorSpace = false } = options;
-  return {
-    name: "@unocss/preset-legacy-compat",
-    postprocess: (util) => {
-      util.entries.forEach((i) => {
-        let value = i[1];
-        if (typeof value !== "string") return;
-        if (commaStyleColorFunction) value = toCommaStyleColorFunction(value);
-        if (value !== i[1]) i[1] = value;
-        if (legacyColorSpace) i[1] = i[1].replace(/\s*in (oklch|oklab)/g, "");
-      });
-    }
-  };
-});
-
-// src/uno.h5.config.ts
-import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
-
 // src/breakpoints.ts
 var breakpoints = {
   "xs": "320px",
@@ -107,6 +63,50 @@ var shortcuts = [
   ["text-9xl", "text-128px lh-136px"]
 ];
 var shortcuts_default = shortcuts;
+
+// node_modules/.pnpm/@unocss+core@66.7.0/node_modules/@unocss/core/dist/index.mjs
+var LAYER_DEFAULT = "default";
+var LAYER_PREFLIGHTS = "preflights";
+var LAYER_SHORTCUTS = "shortcuts";
+var LAYER_IMPORTS = "imports";
+var DEFAULT_LAYERS = {
+  [LAYER_IMPORTS]: -200,
+  [LAYER_PREFLIGHTS]: -100,
+  [LAYER_SHORTCUTS]: -10,
+  [LAYER_DEFAULT]: 0
+};
+function definePreset(preset) {
+  return preset;
+}
+
+// node_modules/.pnpm/@unocss+preset-legacy-compat@66.7.0/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
+function toCommaStyleColorFunction(str) {
+  return str.replace(/((?:rgb|hsl)a?)\(([^)]+)\)/g, (_, fn, v) => {
+    const [rgb, alpha] = v.split(/\//g).map((i) => i.trim());
+    if (alpha && !fn.endsWith("a")) fn += "a";
+    const parts = rgb.split(/,?\s+/).map((i) => i.trim());
+    if (alpha) parts.push(alpha);
+    return `${fn}(${parts.filter(Boolean).join(", ")})`;
+  });
+}
+var presetLegacyCompat = definePreset((options = {}) => {
+  const { commaStyleColorFunction = false, legacyColorSpace = false } = options;
+  return {
+    name: "@unocss/preset-legacy-compat",
+    postprocess: (util) => {
+      util.entries.forEach((i) => {
+        let value = i[1];
+        if (typeof value !== "string") return;
+        if (commaStyleColorFunction) value = toCommaStyleColorFunction(value);
+        if (value !== i[1]) i[1] = value;
+        if (legacyColorSpace) i[1] = i[1].replace(/\s*in (oklch|oklab)/g, "");
+      });
+    }
+  };
+});
+
+// src/uno.h5.config.ts
+import { defineConfig, presetAttributify, presetIcons, presetMini, presetWind3, presetWind4, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from "unocss";
 
 // src/units.ts
 var pxRE = /(-?[.\d]+)px/g;
@@ -420,8 +420,10 @@ function webRemConfig(pxToRemconfig = {}, preset = "wind3", presetConfig = {}) {
 var datavConfig = webRemConfig;
 export {
   adminConfig,
+  breakpoints_default as breakpoints,
   datavConfig,
   h5Config,
+  shortcuts_default as shortcuts,
   uniappConfig,
   webConfig,
   webRemConfig
