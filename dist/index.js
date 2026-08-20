@@ -1,4 +1,4 @@
-// node_modules/.pnpm/@unocss+core@66.7.0/node_modules/@unocss/core/dist/index.mjs
+// node_modules/.pnpm/@unocss+core@66.8.0/node_modules/@unocss/core/dist/index.mjs
 var LAYER_DEFAULT = "default";
 var LAYER_PREFLIGHTS = "preflights";
 var LAYER_SHORTCUTS = "shortcuts";
@@ -13,7 +13,7 @@ function definePreset(preset) {
   return preset;
 }
 
-// node_modules/.pnpm/@unocss+preset-legacy-compat@66.7.0/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
+// node_modules/.pnpm/@unocss+preset-legacy-compat@66.8.0/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
 function toCommaStyleColorFunction(str) {
   return str.replace(/((?:rgb|hsl)a?)\(([^)]+)\)/g, (_, fn, v) => {
     const [rgb, alpha] = v.split(/\//g).map((i) => i.trim());
@@ -27,6 +27,7 @@ var presetLegacyCompat = definePreset((options = {}) => {
   const { commaStyleColorFunction = false, legacyColorSpace = false } = options;
   return {
     name: "@unocss/preset-legacy-compat",
+    docs: "https://unocss.dev/presets/legacy-compat",
     postprocess: (util) => {
       util.entries.forEach((i) => {
         let value = i[1];

@@ -28,6 +28,11 @@ trustPolicyExclude:
   - semver
   - chokidar
   - cached-factory
+  - unocss-applet
+  - '@unocss-applet/transformer-hover'
+  - '@unocss-applet/preset-applet'
+  - '@unocss-applet/preset-rem-rpx'
+  - '@unocss-applet/transformer-attributify'
 
 allowBuilds:
   esbuild: true
