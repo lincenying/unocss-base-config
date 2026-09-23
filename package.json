@@ -2,7 +2,7 @@
   "name": "@lincy/unocss-base-config",
   "type": "module",
   "version": "2.8.1",
-  "packageManager": "pnpm@11.22.0",
+  "packageManager": "pnpm@12.5.1",
   "description": "Unocss H5,Web,Rem,Uniapp 默认配置",
   "author": "lincenying <lincenying@gmail.com>",
   "license": "MIT",
@@ -41,16 +41,16 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "unocss": "^66.8.0",
-    "unocss-applet": "^0.13.8"
+    "unocss": "^66.10.5",
+    "unocss-applet": "^0.15.1"
   },
   "devDependencies": {
-    "@antfu/ni": "^30.5.0",
-    "@lincy/eslint-config": "^7.2.0",
-    "@types/node": "^26.2.0",
-    "@unocss/preset-legacy-compat": "^66.8.0",
-    "bumpp": "^12.2.1",
-    "eslint": "^10.8.1",
+    "@antfu/ni": "^30.6.0",
+    "@lincy/eslint-config": "^8.0.1",
+    "@types/node": "^26.6.2",
+    "@unocss/preset-legacy-compat": "^66.10.5",
+    "bumpp": "^12.3.0",
+    "eslint": "^10.11.0",
     "esno": "^4.8.0",
     "simple-open-url": "^3.0.1",
     "tsup": "^8.5.1",
