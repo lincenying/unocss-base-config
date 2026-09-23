@@ -39,7 +39,7 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
-// node_modules/.pnpm/@unocss+core@66.8.0/node_modules/@unocss/core/dist/index.mjs
+// node_modules/.pnpm/@unocss+core@66.10.5/node_modules/@unocss/core/dist/index.mjs
 var LAYER_DEFAULT = "default";
 var LAYER_PREFLIGHTS = "preflights";
 var LAYER_SHORTCUTS = "shortcuts";
@@ -54,7 +54,7 @@ function definePreset(preset) {
   return preset;
 }
 
-// node_modules/.pnpm/@unocss+preset-legacy-compat@66.8.0/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
+// node_modules/.pnpm/@unocss+preset-legacy-compat@66.10.5/node_modules/@unocss/preset-legacy-compat/dist/index.mjs
 function toCommaStyleColorFunction(str) {
   return str.replace(/((?:rgb|hsl)a?)\(([^)]+)\)/g, (_, fn, v) => {
     const [rgb, alpha] = v.split(/\//g).map((i) => i.trim());
